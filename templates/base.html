@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+{% load static %}
+<html dir="rtl" lang="fa">
+
+<head>
+	<meta charset="utf-8" />
+	<meta content="IE=edge" http-equiv="X-UA-Compatible" />
+	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+	<meta content="Synvo HTML Template" name="description" />
+	<title>
+		{% block title %} Synvo {% endblock title %}
+	</title>
+	<!-- Fav Icon -->
+	<link href="{% static 'imgs/logo/favicon.png' %}" rel="icon" type="image/x-icon" />
+	<!-- Dependencies CSS Files -->
+	<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" />
+	<link href="{% static 'css/fontawesome-pro.css' %}" rel="stylesheet" />
+	<link href="{% static 'css/swiper-bundle.min.css' %}" rel="stylesheet" />
+	<link href="{% static 'css/progressbar.css' %}" rel="stylesheet" />
+	<link href="{% static 'css/meanmenu.min.css' %}" rel="stylesheet" />
+	<link href="{% static 'css/magnific-popup.css' %}" rel="stylesheet" />
+	<link href="{% static 'css/animate.min.css' %}" rel="stylesheet" />
+	<link href="{% static 'css/odometer-theme-default.css' %}" rel="stylesheet" />
+	<link href="{% static 'css/nice-select.css' %}" rel="stylesheet" />
+	<!-- Template Main CSS File -->
+	<link href="{% static 'css/style.css' %}" rel="stylesheet" />
+</head>
+
+<body class="body-wrapper">
+	<!-- <div class="loader-wrap">
+		<svg preserveaspectratio="none" viewbox="0 0 1000 1000">
+			<path d="M0,1005S175,995,500,995s500,5,500,5V0H0Z" id="svg">
+			</path>
+		</svg>
+		<div class="loader-wrap-heading">
+			<div class="load-text">
+				<span>
+					S
+				</span>
+				<span>
+					Y
+				</span>
+				<span>
+					N
+				</span>
+				<span>
+					V
+				</span>
+				<span>
+					O
+				</span>
+			</div>
+		</div>
+	</div> -->
+	<!-- Sroll to top -->
+	<div class="progress-wrap">
+		<svg class="progress-circle svg-content" height="100%" viewbox="-1 -1 102 102" width="100%">
+			<path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98">
+			</path>
+		</svg>
+	</div>
+	<!-- side toggle start -->
+	<aside class="fix">
+		<div class="side-info">
+			<div class="side-info-content">
+				<div class="offset-widget offset-header">
+					<div class="offset-logo">
+						<a href="index-2.html">
+							<img alt="site logo" src="{% static 'imgs/logo/logo.png' %}" />
+						</a>
+					</div>
+					<button class="side-info-close" id="side-info-close">
+						<i class="fas fa-times">
+						</i>
+					</button>
+				</div>
+				<div class="mobile-menu fix">
+				</div>
+				<div class="offset-button">
+					<a class="rr-btn" href="contact.html">
+						<span class="btn-wrap">
+							<span class="text-one">
+								بیایید صحبت کنیم
+							</span>
+							<span class="text-two">
+								بیایید صحبت کنیم
+							</span>
+						</span>
+					</a>
+				</div>
+				<div class="offset-widget-box">
+					<h2 class="title">
+						با ما تماس بگیرید
+					</h2>
+					<div class="contact-meta">
+						<div class="contact-item">
+							<span class="icon">
+								<i class="fa-solid fa-location-dot">
+								</i>
+							</span>
+							<span class="text">
+								اصفهان، چهارباغ بالا،
+								<br />
+								بهارآزادی، بن بست نسترن
+							</span>
+						</div>
+						<div class="contact-item">
+							<span class="icon">
+								<i class="fa-solid fa-envelope">
+								</i>
+							</span>
+							<span class="text">
+								<a href="mailto:synvo@gmail.com">
+									synvo@gmail.com
+								</a>
+							</span>
+						</div>
+						<div class="contact-item">
+							<span class="icon">
+								<i class="fa-solid fa-phone">
+								</i>
+							</span>
+							<span class="text">
+								<a href="tel:09010010011">
+									۰۹۰۱۰۰۱۰۰۱۱
+								</a>
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</aside>
+	<div class="offcanvas-overlay">
+	</div>
+	<!-- side toggle end -->
+	<div class="has-smooth" id="has_smooth">
+	</div>
+	<div id="smooth-wrapper">
+		<div id="smooth-content">
+			<!-- Header-2 area start -->
+			<header class="header-2-area">
+				<div class="header-2-top">
+					<div class="container rr-container-1410">
+						<div class="header-2-top-inner">
+							<div class="header-2-contact-meta">
+								<div class="header-2-contact-item">
+									<span class="icon">
+										<i class="fa-solid fa-phone">
+										</i>
+									</span>
+									<span class="text">
+										<a href="tel:09010010011">
+											09010010011
+										</a>
+									</span>
+								</div>
+								<div class="header-2-contact-item">
+									<span class="icon">
+										<i class="fa-solid fa-location-dot">
+										</i>
+									</span>
+									<span class="text">
+										اصفهان، چهارباغ بالا
+									</span>
+								</div>
+								<div class="header-2-contact-item">
+									<span class="icon">
+										<i class="fa-solid fa-envelope">
+										</i>
+									</span>
+									<span class="text">
+										<a href="mailto:synvo@gmail.com">
+											synvo@gmail.com
+										</a>
+									</span>
+								</div>
+							</div>
+							<div class="header-2-social">
+								<span class="text">
+									ما را دنبال کنید:
+								</span>
+								<a href="https://www.facebook.com/">
+									<i class="fa-brands fa-facebook-f">
+									</i>
+								</a>
+								<a href="https://x.com/?lang=en">
+									<i class="fa-brands fa-twitter">
+									</i>
+								</a>
+								<a href="https://www.linkedin.com/">
+									<i class="fa-brands fa-instagram">
+									</i>
+								</a>
+								<a href="https://www.linkedin.com/">
+									<i class="fa-brands fa-behance">
+									</i>
+								</a>
+								<a href="https://www.linkedin.com/">
+									<i class="fa-brands fa-youtube">
+									</i>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="header-2-main">
+					<div class="container rr-container-1410">
+						<div class="header-2-main-inner">
+							<div class="header-2-logo">
+								<a href="index-2.html">
+									<img alt="Site Logo" class="normal-logo" src="{% static 'imgs/logo/logo.png' %}" />
+								</a>
+							</div>
+							<div class="header-2-nav">
+								<nav class="main-menu">
+									<ul>
+										<li class="menu-item-has-children">
+											<a href="#">
+												خانه
+											</a>
+											<ul class="dp-menu">
+												<li>
+													<a href="home-1.html">
+														خانه 1
+													</a>
+												</li>
+												<li>
+													<a href="home-2.html">
+														خانه 2
+													</a>
+												</li>
+												<li>
+													<a href="home-3.html">
+														خانه 3
+													</a>
+												</li>
+											</ul>
+										</li>
+										<li class="menu-item-has-children">
+											<a href="#">
+												صفحات
+											</a>
+											<ul class="dp-menu">
+												<li>
+													<a href="about.html">
+														درباره ما
+													</a>
+												</li>
+												<li>
+													<a href="projects.html">
+														نمونه کارها
+													</a>
+												</li>
+												<li>
+													<a href="project-details.html">
+														ویدیوی جزئیات نمونه کارها
+													</a>
+												</li>
+												<li>
+													<a href="pricing.html">
+														قیمت گذاری
+													</a>
+												</li>
+												<li>
+													<a href="team.html">
+														تیم
+													</a>
+												</li>
+												<li>
+													<a href="team-details.html">
+														جزئیات تیم
+													</a>
+												</li>
+												<li>
+													<a href="404.html">
+														صفحه خطا
+													</a>
+												</li>
+											</ul>
+										</li>
+										<li class="menu-item-has-children">
+											<a href="#">
+												خدمات
+											</a>
+											<ul class="dp-menu">
+												<li>
+													<a href="service.html">
+														خدمات اصلی
+													</a>
+												</li>
+												<li>
+													<a href="service-details.html">
+														جزئیات خدمات
+													</a>
+												</li>
+											</ul>
+										</li>
+										<li class="menu-item-has-children">
+											<a href="#">
+												وبلاگ
+											</a>
+											<ul class="dp-menu">
+												<li>
+													<a href="blog.html">
+														وبلاگ
+													</a>
+												</li>
+												<li>
+													<a href="blog-details.html">
+														جزئیات وبلاگ
+													</a>
+												</li>
+											</ul>
+										</li>
+										<li>
+											<a href="contact.html">
+												تماس
+											</a>
+										</li>
+									</ul>
+								</nav>
+							</div>
+							<div class="header-2-cta">
+								<span class="call-box">
+									با ما تماس بگیرید:
+									<a href="tel:09020010011">
+										09020010011
+									</a>
+								</span>
+							</div>
+							<div class="header-2-offfcanvas">
+								<button class="side-toggle">
+									<i class="fa-solid fa-bars">
+									</i>
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</header>
+			<!-- Header-2 area end -->
+
+			{% block content %}
+
+			{% endblock content %}
+			<!-- footer-2 area start  -->
+			<footer class="footer-2-area">
+				<div class="footer-2-bg">
+					<img alt="image" src="{% static 'imgs/gallery/gallery-49.webp' %}" />
+				</div>
+				<div class="footer-2-widget-wrapper-box">
+					<div class="container rr-container-1410">
+						<h2 class="footer-2-title">
+							تکامل
+						</h2>
+						<div class="footer-2-widget-wrapper">
+							<div class="footer-2-widget-box">
+								<div class="footer-2-logo">
+									<a href="index-2.html">
+										<img alt="image" src="{% static 'imgs/logo/logo-light.png' %}" />
+									</a>
+								</div>
+								<div class="footer-2-text">
+									<p class="text">
+										ما از توانمندسازی مشاغل از طریق نوآورانه و قابل اعتماد اشتیاق داریم
+										راه حل های فناوری.
+									</p>
+								</div>
+								<div class="footer-2-social">
+									<a href="https://www.facebook.com/">
+										<i class="fa-brands fa-facebook-f">
+										</i>
+									</a>
+									<a href="https://x.com/?lang=en">
+										<i class="fa-brands fa-twitter">
+										</i>
+									</a>
+									<a href="https://www.instagram.com/">
+										<i class="fa-brands fa-instagram">
+										</i>
+									</a>
+									<a href="https://www.linkedin.com/">
+										<i class="fa-brands fa-linkedin-in">
+										</i>
+									</a>
+									<a href="https://www.whatsapp.com/">
+										<i class="fa-brands fa-whatsapp">
+										</i>
+									</a>
+								</div>
+							</div>
+							<div class="footer-2-widget-box">
+								<h2 class="footer-2-widget-title">
+									خدمات ما
+								</h2>
+								<ul class="footer-2-nav-list">
+									<li>
+										<a href="#">
+											<i class="fa-solid fa-chevron-left">
+											</i>
+											راه حل پایگاه داده
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i class="fa-solid fa-chevron-left">
+											</i>
+											حفاظت داده ها
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i class="fa-solid fa-chevron-left">
+											</i>
+											توسعه برنامه
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i class="fa-solid fa-chevron-left">
+											</i>
+											یادگیری ماشین
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i class="fa-solid fa-chevron-left">
+											</i>
+											خدمات راهنما
+										</a>
+									</li>
+								</ul>
+							</div>
+							<div class="footer-2-widget-box">
+								<h2 class="footer-2-widget-title">
+									شرکت آدرس
+								</h2>
+								<ul class="footer-2-meta-list">
+									<li>
+										<span class="icon">
+											<i class="fa-solid fa-location-dot">
+											</i>
+										</span>
+										<span class="text">
+											اصفهان، خیابان چهارباغ بالا، بهارآزادی، بن بست نسترن
+										</span>
+									</li>
+									<li>
+										<span class="icon">
+											<i class="fa-solid fa-phone">
+											</i>
+										</span>
+										<span class="text">
+											با ما تماس بگیرید:
+											<a href="tel:09010010011">
+												۰۹۰۱۰۰۱۰۰۱۱
+											</a>
+										</span>
+									</li>
+									<li>
+										<span class="icon">
+											<i class="fa-solid fa-envelope">
+											</i>
+										</span>
+										<span class="text">
+											نامه:
+											<a href="mailto:synvo@gmail.com">
+												synvo@gmail.com
+											</a>
+										</span>
+									</li>
+									<li>
+										<span class="icon">
+											<i class="fa-solid fa-clock">
+											</i>
+										</span>
+										<span class="text">
+											دفتر: 8:00 صبح -
+											7:00 بعد از ظهر
+										</span>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="copyright-2-area">
+					<div class="container rr-container-1410">
+						<div class="copyright-2-area-inner">
+							<div class="copyright-2-text">
+								<p class="text">
+									تمامی حقوق محفوظ است، طراحی شده توسط iarsalan
+								</p>
+							</div>
+							<div class="copyright-2-link">
+								<a href="contact.html">
+									سیاست حفظ حریم
+								</a>
+								<a href="contact.html">
+									شرایط استفاده
+								</a>
+								<a href="contact.html">
+									نقشه سایت
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</footer>
+			<!-- footer-2 area end  -->
+		</div>
+	</div>
+	<!-- Dependencies JS Files -->
+	<script src="{% static 'js/jquery-3.6.0.min.js' %}">
+	</script>
+	<script src="{% static 'js/bootstrap.bundle.min.js' %}">
+	</script>
+	<script src="{% static 'js/jquery.magnific-popup.min.js' %}">
+	</script>
+	<script src="{% static 'js/swiper-bundle.min.js' %}">
+	</script>
+	<script src="{% static 'js/odometer.min.js' %}">
+	</script>
+	<script src="{% static 'js/waypoints.min.js' %}">
+	</script>
+	<script src="{% static 'js/progressbar.js' %}">
+	</script>
+	<script src="{% static 'js/gsap.min.js' %}">
+	</script>
+	<script src="{% static 'js/ScrollSmoother.min.js' %}">
+	</script>
+	<script src="{% static 'js/ScrollTrigger.min.js' %}">
+	</script>
+	<script src="{% static 'js/SplitText.min.js' %}">
+	</script>
+	<script src="{% static 'js/TextPlugin.js' %}">
+	</script>
+	<script src="{% static 'js/customEase.js' %}">
+	</script>
+	<script src="{% static 'js/jquery.meanmenu.min.js' %}">
+	</script>
+	<script src="{% static 'js/backToTop.js' %}">
+	</script>
+	<script src="{% static 'js/jquery.nice-select.min.js' %}">
+	</script>
+	<script src="{% static 'js/wow.min.js' %}">
+	</script>
+	<!-- Template Main JS File -->
+	<script src="{% static 'js/main.js' %}">
+	</script>
+</body>
+
+</html>
