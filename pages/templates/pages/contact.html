@@ -1,0 +1,206 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}تماس با ما{% endblock title %}
+
+
+{% block content %}
+
+<main>
+	 <!-- breadcrumb area start -->
+	 <section class="breadcrumb-area">
+	  <div class="breadcrumb-area-inner">
+	   <div class="breadcrumb-bg">
+		<img alt="image" src="{% static 'imgs/gallery/gallery-29.webp' %}"/>
+	   </div>
+	   <div class="container rr-container-1410">
+		<div class="breadcrumb-content">
+		 <div class="title-wrapper">
+		  <h1 class="breadcrumb-title">
+		   با ما تماس بگیرید
+		  </h1>
+		 </div>
+		 <div class="breadcrumb-wrapper">
+		  <ul class="rr-breadcrumb">
+		   <li>
+			<a href="#">
+			 خانه
+			</a>
+		   </li>
+		   <li>
+			با ما تماس بگیرید
+		   </li>
+		  </ul>
+		 </div>
+		</div>
+	   </div>
+	  </div>
+	 </section>
+	 <!-- breadcrumb area end -->
+	 <!-- contact area start  -->
+	 <div class="contact-area">
+	  <div class="container rr-container-1410">
+	   <div class="contact-area-inner section-spacing">
+		<div class="contact-wrapper">
+		 <div class="contact-box fade-anim">
+		  <div class="thumb">
+		   <div class="icon">
+			<i class="fa-solid fa-location-dot">
+			</i>
+		   </div>
+		   <img alt="image" src="{% static 'imgs/gallery/gallery-45.webp' %}"/>
+		  </div>
+		  <div class="contact-text">
+		   <div class="link">
+			آدرس ما:
+		   </div>
+		   <p class="text">
+			اصفهان، خیابان چهارباغ بالا، بهارآزادی، بن بست نسترن
+		   </p>
+		  </div>
+		 </div>
+		 <div class="contact-box fade-anim">
+		  <div class="thumb">
+		   <div class="icon">
+			<i class="fa-solid fa-envelope">
+			</i>
+		   </div>
+		   <img alt="image" src="{% static 'imgs/gallery/gallery-46.webp' %}"/>
+		  </div>
+		  <div class="contact-text">
+		   <div class="link">
+			<a href="mailto:info@synvo.com">
+			 info@synvo.com
+			</a>
+		   </div>
+		   <p class="text">
+			در هر زمان برای هر نوع پرس و جو برای ما ایمیل کنید.
+		   </p>
+		  </div>
+		 </div>
+		 <div class="contact-box fade-anim">
+		  <div class="thumb">
+		   <div class="icon">
+			<i class="fa-solid fa-phone-volume">
+			</i>
+		   </div>
+		   <img alt="image" src="{% static 'imgs/gallery/gallery-47.webp' %}"/>
+		  </div>
+		  <div class="contact-text">
+		   <div class="link">
+			خط تلفن:
+			<a href="tel:09010010011">
+			09010010011
+			</a>
+		   </div>
+		   <p class="text">
+			هر زمان که فوری باشد با ما تماس بگیرید
+		   </p>
+		  </div>
+		 </div>
+		</div>
+		<div class="contact-form-wrapper-box fade-anim">
+		 <div class="contact-form-wrapper">
+		  <div class="contact-form-content">
+		   <div class="section-title-wrapper">
+			<div class="subtitle-wrapper">
+			 <span class="section-subtitle">
+			  <span class="start-shape">
+			  </span>
+			  <span class="text">
+			   وارد شدن
+							لمس کردن
+			  </span>
+			  <span class="end-shape">
+			  </span>
+			 </span>
+			</div>
+			<div class="title-wrapper">
+			 <h2 class="section-title">
+			  سلام ، امروز چطور کار می کنی؟
+			  <br/>
+			  بیایید اکنون صحبت کنیم
+			 </h2>
+			</div>
+		   </div>
+		   <div class="main-contact-wrap">
+			<form action="#">
+			 <div class="contact-formwrap">
+			  <div class="contact-formfield">
+			   <input id="Name" name="Name" placeholder="نام شما" type="text"/>
+			   <i class="fa-regular fa-user">
+			   </i>
+			  </div>
+			  <div class="contact-formfield">
+			   <input id="Email" name="Email" placeholder="ایمیل شما" type="text"/>
+			   <i class="fa-regular fa-envelope">
+			   </i>
+			  </div>
+			  <div class="contact-formfield">
+			   <input id="Phone" name="Phone" placeholder="تلفن شما" type="text"/>
+			   <i class="fa-regular fa-phone">
+			   </i>
+			  </div>
+			  <div class="contact-formfield">
+			   <select id="category" name="category">
+				<option disabled="" selected="" value="Reason for enquiry">
+				 دلیل تحقیق
+				</option>
+				<option value="IT Service">
+				 سرویس IT
+				</option>
+				<option value="Cloud Service">
+				 سرویس ابری
+				</option>
+				<option value="Cybersecurity">
+				 امنیت سایبری
+				</option>
+				<option value="Business">
+				 تجارت
+				</option>
+				<option value="Marketing">
+				 بازاریابی
+				</option>
+			   </select>
+			   <i class="fa-solid fa-angle-down">
+			   </i>
+			  </div>
+			  <div class="contact-formfield span-2">
+			   <textarea id="message" name="message" placeholder="در مورد پروژه خود برای ما بگویید ..."></textarea>
+			   <i class="fa-regular fa-pen">
+			   </i>
+			  </div>
+			 </div>
+			 <div class="submit-btn">
+			  <button class="rr-btn" type="submit">
+			   <span class="btn-wrap">
+				<span class="text-one">
+				 ارسال پیام
+				 <i class="fa-solid fa-arrow-left">
+				 </i>
+				</span>
+				<span class="text-two">
+				 ارسال پیام
+				 <i class="fa-solid fa-arrow-left">
+				 </i>
+				</span>
+			   </span>
+			  </button>
+			 </div>
+			</form>
+		   </div>
+		  </div>
+		  <div class="contact-map">
+		   <iframe allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d35795.11384638031!2d-99.17159308242708!3d19.434090077412847!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1f8d31cc643c1%3A0xf196290face78843!2sColonia%20Tabacalera%2C%2006030%20Mexico%20City%2C%20CDMX%2C%20Mexico!5e0!3m2!1sen!2sbd!4v1753283924211!5m2!1sen!2sbd" style="border:0;">
+		   </iframe>
+		  </div>
+		 </div>
+		</div>
+	   </div>
+	  </div>
+	 </div>
+	 <!-- contact area end  -->
+	</main>
+
+{% endblock content %}
