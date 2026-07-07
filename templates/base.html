@@ -8,7 +8,7 @@
 	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
 	<meta content="Synvo HTML Template" name="description" />
 	<title>
-		{% block title %} Synvo {% endblock title %}
+		{% block title %}  {% endblock title %}
 	</title>
 	<!-- Fav Icon -->
 	<link href="{% static 'imgs/logo/favicon.png' %}" rel="icon" type="image/x-icon" />
@@ -65,7 +65,7 @@
 			<div class="side-info-content">
 				<div class="offset-widget offset-header">
 					<div class="offset-logo">
-						<a href="index-2.html">
+						<a href="{% url 'pages:home' %}">
 							<img alt="site logo" src="{% static 'imgs/logo/logo.png' %}" />
 						</a>
 					</div>
@@ -77,7 +77,7 @@
 				<div class="mobile-menu fix">
 				</div>
 				<div class="offset-button">
-					<a class="rr-btn" href="contact.html">
+					<a class="rr-btn" href="{% url 'pages:contact' %}">
 						<span class="btn-wrap">
 							<span class="text-one">
 								بیایید صحبت کنیم
@@ -99,9 +99,9 @@
 								</i>
 							</span>
 							<span class="text">
-								اصفهان، چهارباغ بالا،
+							تهران ، احمد آباد مستوفی
 								<br />
-								بهارآزادی، بن بست نسترن
+							
 							</span>
 						</div>
 						<div class="contact-item">
@@ -110,8 +110,8 @@
 								</i>
 							</span>
 							<span class="text">
-								<a href="mailto:synvo@gmail.com">
-									synvo@gmail.com
+								<a href="mailto:jahansang20@gmail.com">
+									jahansang20@gmail.com
 								</a>
 							</span>
 						</div>
@@ -121,8 +121,8 @@
 								</i>
 							</span>
 							<span class="text">
-								<a href="tel:09010010011">
-									۰۹۰۱۰۰۱۰۰۱۱
+								<a href="tel:09123108563">
+									09123108563
 								</a>
 							</span>
 						</div>
@@ -150,8 +150,8 @@
 										</i>
 									</span>
 									<span class="text">
-										<a href="tel:09010010011">
-											09010010011
+										<a href="tel:09123108563">
+											09123108563
 										</a>
 									</span>
 								</div>
@@ -161,7 +161,7 @@
 										</i>
 									</span>
 									<span class="text">
-										اصفهان، چهارباغ بالا
+									تهران ، احمد آباد مستوفی
 									</span>
 								</div>
 								<div class="header-2-contact-item">
@@ -170,8 +170,8 @@
 										</i>
 									</span>
 									<span class="text">
-										<a href="mailto:synvo@gmail.com">
-											synvo@gmail.com
+										<a href="mailto:jahansang20@gmail.com">
+											jahansang20@gmail.com
 										</a>
 									</span>
 								</div>
@@ -180,23 +180,23 @@
 								<span class="text">
 									ما را دنبال کنید:
 								</span>
-								<a href="https://www.facebook.com/">
+								<!-- <a href="https://www.facebook.com/">
 									<i class="fa-brands fa-facebook-f">
 									</i>
-								</a>
-								<a href="https://x.com/?lang=en">
+								</a> -->
+								<!-- <a href="https://x.com/?lang=en">
 									<i class="fa-brands fa-twitter">
 									</i>
-								</a>
-								<a href="https://www.linkedin.com/">
+								</a> -->
+								<a href="https://www.instagram.com/jahansang20/">
 									<i class="fa-brands fa-instagram">
 									</i>
 								</a>
-								<a href="https://www.linkedin.com/">
+								<!-- <a href="https://www.linkedin.com/">
 									<i class="fa-brands fa-behance">
 									</i>
-								</a>
-								<a href="https://www.linkedin.com/">
+								</a> -->
+								<a href="https://www.youtube.com/">
 									<i class="fa-brands fa-youtube">
 									</i>
 								</a>
@@ -208,113 +208,35 @@
 					<div class="container rr-container-1410">
 						<div class="header-2-main-inner">
 							<div class="header-2-logo">
-								<a href="index-2.html">
+								<a href="{% url 'pages:home' %}">
 									<img alt="Site Logo" class="normal-logo" src="{% static 'imgs/logo/logo.png' %}" />
 								</a>
 							</div>
 							<div class="header-2-nav">
 								<nav class="main-menu">
 									<ul>
-										<li class="menu-item-has-children">
-											<a href="#">
+										<li class="menu-item">
+											<a href="{% url 'pages:home' %}">
 												خانه
 											</a>
-											<ul class="dp-menu">
-												<li>
-													<a href="home-1.html">
-														خانه 1
-													</a>
-												</li>
-												<li>
-													<a href="home-2.html">
-														خانه 2
-													</a>
-												</li>
-												<li>
-													<a href="home-3.html">
-														خانه 3
-													</a>
-												</li>
-											</ul>
-										</li>
-										<li class="menu-item-has-children">
+										
+										<li class="menu-item">
 											<a href="#">
-												صفحات
+												پروژه ها
 											</a>
-											<ul class="dp-menu">
-												<li>
-													<a href="about.html">
-														درباره ما
-													</a>
-												</li>
-												<li>
-													<a href="projects.html">
-														نمونه کارها
-													</a>
-												</li>
-												<li>
-													<a href="project-details.html">
-														ویدیوی جزئیات نمونه کارها
-													</a>
-												</li>
-												<li>
-													<a href="pricing.html">
-														قیمت گذاری
-													</a>
-												</li>
-												<li>
-													<a href="team.html">
-														تیم
-													</a>
-												</li>
-												<li>
-													<a href="team-details.html">
-														جزئیات تیم
-													</a>
-												</li>
-												<li>
-													<a href="404.html">
-														صفحه خطا
-													</a>
-												</li>
-											</ul>
 										</li>
-										<li class="menu-item-has-children">
+										<li class="menu-item">
 											<a href="#">
-												خدمات
+											وبلاگ
 											</a>
-											<ul class="dp-menu">
-												<li>
-													<a href="service.html">
-														خدمات اصلی
-													</a>
-												</li>
-												<li>
-													<a href="service-details.html">
-														جزئیات خدمات
-													</a>
-												</li>
-											</ul>
 										</li>
-										<li class="menu-item-has-children">
-											<a href="#">
-												وبلاگ
+										<li class="menu-item">
+											<a href="{% url 'pages:about' %}">
+												درباره ما
 											</a>
-											<ul class="dp-menu">
-												<li>
-													<a href="blog.html">
-														وبلاگ
-													</a>
-												</li>
-												<li>
-													<a href="blog-details.html">
-														جزئیات وبلاگ
-													</a>
-												</li>
-											</ul>
 										</li>
 										<li>
-											<a href="contact.html">
+											<a href="{% url 'pages:contact' %}">
 												تماس
 											</a>
 										</li>
@@ -324,8 +246,8 @@
 							<div class="header-2-cta">
 								<span class="call-box">
 									با ما تماس بگیرید:
-									<a href="tel:09020010011">
-										09020010011
+									<a href="tel:09123108563">
+										09123108563
 									</a>
 								</span>
 							</div>
