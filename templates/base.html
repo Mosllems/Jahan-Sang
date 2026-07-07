@@ -8,7 +8,7 @@
 	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
 	<meta content="Synvo HTML Template" name="description" />
 	<title>
-		{% block title %}  {% endblock title %}
+		{% block title %} {% endblock title %}
 	</title>
 	<!-- Fav Icon -->
 	<link href="{% static 'imgs/logo/favicon.png' %}" rel="icon" type="image/x-icon" />
@@ -99,9 +99,9 @@
 								</i>
 							</span>
 							<span class="text">
-							تهران ، احمد آباد مستوفی
+								تهران ، احمد آباد مستوفی
 								<br />
-							
+
 							</span>
 						</div>
 						<div class="contact-item">
@@ -161,7 +161,7 @@
 										</i>
 									</span>
 									<span class="text">
-									تهران ، احمد آباد مستوفی
+										تهران ، احمد آباد مستوفی
 									</span>
 								</div>
 								<div class="header-2-contact-item">
@@ -219,7 +219,7 @@
 											<a href="{% url 'pages:home' %}">
 												خانه
 											</a>
-										
+
 										<li class="menu-item">
 											<a href="#">
 												پروژه ها
@@ -227,7 +227,7 @@
 										</li>
 										<li class="menu-item">
 											<a href="#">
-											وبلاگ
+												وبلاگ
 											</a>
 										</li>
 										<li class="menu-item">
@@ -278,32 +278,37 @@
 								</div>
 								<div class="footer-text">
 									<p class="text">
-										ما از توانمندسازی مشاغل از طریق نوآورانه و قابل اعتماد اشتیاق داریم
-										راه حل های فناوری.
+										تخصص ما در مجموعه جهان سنگ، طراحی و اجرای بی‌نقص سنگ‌های کابینت و کانتر آشپزخانه
+										است. ما با استفاده از متریال‌های درجه‌یک، ظرافت، زیبایی و دوام را به قلب خانه
+										شما می‌آوریم تا آشپزخانه‌ای لوکس و ماندگار داشته باشید.
 									</p>
 								</div>
 								<div class="footer-social">
-									<a href="https://www.facebook.com/">
+									<!-- <a href="https://www.facebook.com/">
 										<i class="fa-brands fa-facebook-f">
 										</i>
-									</a>
-									<a href="https://x.com/?lang=en">
+									</a> -->
+									<!-- <a href="https://x.com/?lang=en">
 										<i class="fa-brands fa-twitter">
 										</i>
-									</a>
-									<a href="https://www.instagram.com/">
+									</a> -->
+									<a href="https://www.instagram.com/jahansang20/">
 										<i class="fa-brands fa-instagram">
 										</i>
 									</a>
-									<a href="https://www.linkedin.com/">
+									<!-- <a href="https://www.linkedin.com/">
 										<i class="fa-brands fa-linkedin-in">
+										</i>
+									</a> -->
+									<a href="https://www.youtube.com/">
+										<i class="fa-brands fa-youtube">
 										</i>
 									</a>
 								</div>
 							</div>
 							<div class="footer-widget-box">
 								<h2 class="footer-widget-title">
-									شرکت آدرس
+									آدرس
 								</h2>
 								<ul class="footer-meta-list">
 									<li>
@@ -312,7 +317,7 @@
 											</i>
 										</span>
 										<span class="text">
-											اصفهان، چهارباغ بالا، بهارآزادی
+											تهران ، احمد آباد مستوفی
 										</span>
 									</li>
 									<li>
@@ -321,9 +326,9 @@
 											</i>
 										</span>
 										<span class="text">
-											با ما تماس بگیرید:
-											<a href="tel:09010010011">
-												۰۹۰۱۰۰۱۰۰۱۱
+											تلفن:
+											<a href="tel:09123108563">
+												09123108563
 											</a>
 										</span>
 									</li>
@@ -334,12 +339,12 @@
 										</span>
 										<span class="text">
 											نامه:
-											<a href="mailto:synvo@gmail.com">
-												synvo@gmail.com
+											<a href="mailto:jahansang20@gmail.com">
+												jahansang20@gmail.com
 											</a>
 										</span>
 									</li>
-									<li>
+									<!-- <li>
 										<span class="icon">
 											<i class="fa-solid fa-clock">
 											</i>
@@ -348,19 +353,19 @@
 											دفتر: 8:00 صبح -
 											7:00 بعد از ظهر
 										</span>
-									</li>
+									</li> -->
 								</ul>
 							</div>
 							<div class="footer-widget-box">
 								<h2 class="footer-widget-title">
-								لینک صفحات
+									لینک صفحات
 								</h2>
 								<ul class="footer-nav-list">
 									<li>
-										<a href="#">
+										<a href="{% url 'pages:home' %}">
 											<i class="fa-solid fa-chevron-left">
 											</i>
-										خانه
+											خانه
 										</a>
 									</li>
 									<li>
@@ -378,14 +383,14 @@
 										</a>
 									</li>
 									<li>
-										<a href="#">
+										<a href="{% url 'pages:about' %}">
 											<i class="fa-solid fa-chevron-left">
 											</i>
 											درباره ما
 										</a>
 									</li>
 									<li>
-										<a href="#">
+										<a href="{% url 'pages:contact' %}">
 											<i class="fa-solid fa-chevron-left">
 											</i>
 											تماس با ما
@@ -402,35 +407,35 @@
 										<a href="#">
 											<i class="fa-solid fa-chevron-left">
 											</i>
-											راه حل پایگاه داده
+											مشاوره تخصصی و انتخاب متریال
 										</a>
 									</li>
 									<li>
 										<a href="#">
 											<i class="fa-solid fa-chevron-left">
 											</i>
-											حفاظت داده ها
+											اندازه‌گیری دقیق و نقشه‌برداری
 										</a>
 									</li>
 									<li>
 										<a href="#">
 											<i class="fa-solid fa-chevron-left">
 											</i>
-											توسعه برنامه
+											برش‌کاری و ابزارزنی پیشرفته
 										</a>
 									</li>
 									<li>
 										<a href="#">
 											<i class="fa-solid fa-chevron-left">
 											</i>
-											یادگیری ماشین
+											نصب حرفه‌ای
 										</a>
 									</li>
 									<li>
 										<a href="#">
 											<i class="fa-solid fa-chevron-left">
 											</i>
-											خدمات راهنما
+											تضمین کیفیت و خدمات پس از فروش
 										</a>
 									</li>
 								</ul>
@@ -447,29 +452,12 @@
 								</div>
 								<div class="content">
 									<h3 class="title">
-										در خبرنامه های ما ثبت نام کنید.
+										از تازه ترین اخبار ها و رویداد های ما مطلع باشید
 									</h3>
 									<p class="text">
-										همین الان در خبرنامه و رویداد ما شرکت کنید تا از اخبار مطلع شوید.
+										صحفه ی اینستاگرام و سایت ما را دنبال کنید تا از اخبار ما مطلع شوید
 									</p>
 								</div>
-							</div>
-							<div class="footer-newsletter-form">
-								<form action="#" class="footer-subscribe-form">
-									<div class="input-field">
-										<input placeholder="ایمیل خود را وارد کنید" type="email" />
-										<button class="rr-btn" type="submit">
-											<span class="btn-wrap">
-												<span class="text-one">
-													ارسال
-												</span>
-												<span class="text-two">
-													ارسال
-												</span>
-											</span>
-										</button>
-									</div>
-								</form>
 							</div>
 						</div>
 					</div>
@@ -479,19 +467,8 @@
 						<div class="copyright-area-inner">
 							<div class="copyright-text">
 								<p class="text">
-									تمامی حقوق محفوظ است، طراحی شده توسط iarsalan
+									تمامی حقوق محفوظ است، طراحی شده توسط Moslem Amiri
 								</p>
-							</div>
-							<div class="copyright-link">
-								<a href="contact.html">
-									سیاست حفظ حریم
-								</a>
-								<a href="contact.html">
-									شرایط استفاده
-								</a>
-								<a href="contact.html">
-									نقشه سایت
-								</a>
 							</div>
 						</div>
 					</div>

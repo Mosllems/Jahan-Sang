@@ -3940,6 +3940,12 @@ section {
   width: 18px;
   line-height: 26px;
 }
+.footer-meta-list li .text {
+  white-space: nowrap;
+}
+.footer-meta-list li .text a {
+  margin-right: 4px;
+}
 .footer-meta-list li a:hover {
   color: var(--white);
 }
