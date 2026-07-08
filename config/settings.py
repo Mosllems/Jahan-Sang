@@ -81,6 +81,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "pages.context_processors.chat_widget_history",
             ],
         },
     },
@@ -157,3 +158,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
 
 # Custom User
 AUTH_USER_MODEL = 'accounts.CustomUser'
+
+# Chat widget / n8n integration
+N8N_WEBHOOK_URL = env("N8N_WEBHOOK_URL", default="")
+N8N_WEBHOOK_TIMEOUT = env.int("N8N_WEBHOOK_TIMEOUT", default=10)

@@ -24,6 +24,8 @@
 	<link href="{% static 'css/nice-select.css' %}" rel="stylesheet" />
 	<!-- Template Main CSS File -->
 	<link href="{% static 'css/style.css' %}" rel="stylesheet" />
+	<!-- Chat Widget CSS File -->
+	<link href="{% static 'css/chat-widget.css' %}" rel="stylesheet" />
 </head>
 
 <body class="body-wrapper">
@@ -477,6 +479,27 @@
 			<!-- footer area end  -->
 		</div>
 	</div>
+	<!-- Chat Widget -->
+	<div id="chat-widget" class="chat-widget">
+		<button id="chat-widget-toggle" class="chat-widget-toggle" type="button" aria-label="گفتگو با ما">
+			<i class="fa-solid fa-comment-dots"></i>
+		</button>
+		<div id="chat-widget-panel" class="chat-widget-panel" hidden>
+			<div class="chat-widget-header">
+				<img class="chat-widget-avatar" src="{% static 'imgs/logo/favicon.png' %}" alt="" />
+				<span class="chat-widget-title">دستیار جهان سنگ</span>
+				<button id="chat-widget-close" class="chat-widget-close" type="button" aria-label="بستن">×</button>
+			</div>
+			<div id="chat-widget-messages" class="chat-widget-messages"></div>
+			<div id="chat-widget-typing" class="chat-widget-typing" hidden>در حال تایپ...</div>
+			<form id="chat-widget-form" class="chat-widget-form">
+				{% csrf_token %}
+				<input id="chat-widget-input" type="text" autocomplete="off" placeholder="پیام خود را بنویسید..." />
+				<button type="submit" class="chat-widget-send" aria-label="ارسال"><i class="fa-solid fa-paper-plane"></i></button>
+			</form>
+		</div>
+	</div>
+	{{ chat_widget_history|json_script:"chat-history-data" }}
 	<!-- Dependencies JS Files -->
 	<script src="{% static 'js/jquery-3.6.0.min.js' %}">
 	</script>
@@ -514,6 +537,9 @@
 	</script>
 	<!-- Template Main JS File -->
 	<script src="{% static 'js/main.js' %}">
+	</script>
+	<!-- Chat Widget JS File -->
+	<script src="{% static 'js/chat-widget.js' %}">
 	</script>
 </body>
 
