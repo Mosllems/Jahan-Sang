@@ -48,15 +48,20 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
 
+    # third-party
+    "debug_toolbar",
+
     # local apps
     'accounts',
     'pages',
     'projects',
     'blogs',
+
     
 ]
 
 MIDDLEWARE = [
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -67,6 +72,11 @@ MIDDLEWARE = [
     
     # allauth
     "allauth.account.middleware.AccountMiddleware",
+]
+
+INTERNAL_IPS = [
+    "127.0.0.1",
+    
 ]
 
 ROOT_URLCONF = "config.urls"

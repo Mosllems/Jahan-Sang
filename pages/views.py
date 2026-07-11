@@ -11,6 +11,11 @@ from django.views.decorators.http import require_POST
 
 logger = logging.getLogger(__name__)
 
+FALLBACK_REPLY = "با عرض پوزش، ربات گفتگو هنوز فعال نشده است. لطفاً بعداً دوباره تلاش کنید یا از طریق فرم تماس با ما در ارتباط باشید."
+HISTORY_SESSION_KEY = "chat_history"
+SESSION_ID_KEY = "chat_session_id"
+MAX_HISTORY_MESSAGES = 40
+MAX_MESSAGE_LENGTH = 2000
 
 class HomeView(generic.TemplateView):
     template_name = "pages/home.html"
@@ -21,13 +26,6 @@ class AboutView(generic.TemplateView):
 
 class ContactView(generic.TemplateView):
     template_name = "pages/contact.html"
-
-
-FALLBACK_REPLY = "با عرض پوزش، ربات گفتگو هنوز فعال نشده است. لطفاً بعداً دوباره تلاش کنید یا از طریق فرم تماس با ما در ارتباط باشید."
-HISTORY_SESSION_KEY = "chat_history"
-SESSION_ID_KEY = "chat_session_id"
-MAX_HISTORY_MESSAGES = 40
-MAX_MESSAGE_LENGTH = 2000
 
 
 @require_POST
