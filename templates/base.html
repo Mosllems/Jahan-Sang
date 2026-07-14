@@ -228,7 +228,7 @@
 											</a>
 										</li>
 										<li class="menu-item">
-											<a href="#">
+											<a href="{% url 'blogs:blog' %}">
 												وبلاگ
 											</a>
 										</li>
@@ -495,7 +495,8 @@
 			<form id="chat-widget-form" class="chat-widget-form">
 				{% csrf_token %}
 				<input id="chat-widget-input" type="text" autocomplete="off" placeholder="پیام خود را بنویسید..." />
-				<button type="submit" class="chat-widget-send" aria-label="ارسال"><i class="fa-solid fa-paper-plane"></i></button>
+				<button type="submit" class="chat-widget-send" aria-label="ارسال"><i
+						class="fa-solid fa-paper-plane"></i></button>
 			</form>
 		</div>
 	</div>
