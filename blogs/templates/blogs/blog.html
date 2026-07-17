@@ -92,7 +92,7 @@
                                 <i class="fa-regular fa-folder-open"></i>
                             </span>
                             <p class="blog-empty-state-text">
-                                هنوز هیچ مقاله‌ای در این دسته‌بندی وجود ندارد.
+                                محتوایی با این دسته بندی یافت نشد!
                             </p>
                         </div>
                         {% endfor %}
@@ -100,17 +100,17 @@
                     <div class="blog-list-footer">
                         <div class="rr-pagination fade-anim">
                             {% if page_obj.has_previous %}
-                                <a href="?page={{ page_obj.previous_page_number }}&sort={{ request.GET.sort }}">
+                                <a href="?page={{ page_obj.previous_page_number }}&sort={{ request.GET.sort }}&q={{ request.GET.q }}">
                                     <i class="fa-solid fa-angles-right">
                                     </i>
                                 </a>
                             {% endif %}
-                            <a href="?page={{ page_obj.number}}&sort={{ request.GET.sort }}">
+                            <a href="?page={{ page_obj.number}}&sort={{ request.GET.sort }}&q={{ request.GET.q }}">
                                 {{ page_obj.number }}
                             
                             </a>
                             {% if page_obj.has_next %}
-                                <a href="?page={{page_obj.next_page_number}}&sort={{ request.GET.sort }}">
+                                <a href="?page={{page_obj.next_page_number}}&sort={{ request.GET.sort }}&q={{ request.GET.q }}">
                                     <i class="fa-solid fa-angles-left">
                                     </i>
                                 </a>
@@ -125,9 +125,9 @@
                                 اینجا جستجو کنید
                             </h3>
                             <div class="sidebar-search-box">
-                                <form action="#" class="sidebar-search-form">
+                                <form action="{% url 'blogs:blog' %}" class="sidebar-search-form" method="get">
                                     <div class="input-field">
-                                        <input placeholder="جستجو ..." type="text" />
+                                        <input placeholder="جستجو ..." type="text" name="q" value="{{ request.GET.q }}" />
                                         <button class="search-btn" type="submit">
                                             <i class="fa-solid fa-magnifying-glass">
                                             </i>

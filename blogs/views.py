@@ -5,15 +5,18 @@ from blogs.models import Blog, Category
 
 
 class BlogView(generic.ListView):
-    paginate_by = 4
+    paginate_by = 2
     model = Blog
     template_name = "blogs/blog.html"
 
     def get_queryset(self):
         queryset = Blog.objects.select_related('category', 'author').all()
         sorted_blogs = self.request.GET.get('sort')
+        searched_blogs = self.request.GET.get('q')
         if sorted_blogs:
             queryset = queryset.filter(category__slug=sorted_blogs)
+        if searched_blogs:
+            queryset = queryset.filter(title__icontains=searched_blogs)
 
         return queryset
 
