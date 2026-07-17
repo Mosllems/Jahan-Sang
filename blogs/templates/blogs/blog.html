@@ -16,7 +16,7 @@
                 <div class="breadcrumb-content">
                     <div class="title-wrapper">
                         <h1 class="breadcrumb-title">
-                            آخرین پست های ما
+                            آخرین وبلاگ های ما
                         </h1>
                     </div>
                     <div class="breadcrumb-wrapper">
@@ -126,6 +126,7 @@
                             </h3>
                             <div class="sidebar-search-box">
                                 <form action="{% url 'blogs:blog' %}" class="sidebar-search-form" method="get">
+                                {% csrf_token %}
                                     <div class="input-field">
                                         <input placeholder="جستجو ..." type="text" name="q" value="{{ request.GET.q }}" />
                                         <button class="search-btn" type="submit">
@@ -171,7 +172,7 @@
 
                         <div class="blog-sidebar-box">
                             <h3 class="sidebar-title">
-                               بندی دسته
+                              دسته بندی ها
                             </h3>
                             <div class="sidebar-category-box">
                                 <ul class="sidebar-category-list">

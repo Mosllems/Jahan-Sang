@@ -51,7 +51,7 @@
                                     <span class="date">
                                         <i class="fa-regular fa-calendar">
                                         </i>
-                                        {{blog.datetime_modified}}
+                                        {{blog.datetime_modified | date:"Y/m/d"}}
                                     </span>
                                     <span class="author">
                                         <i class="fa-regular fa-user">
@@ -68,185 +68,118 @@
                                     </p>
                                 </div>
                             </div>
-                            <div class="text-wrapper">
-                                <p class="text">
-                                    به طور حرفه ای آمادگی وب را در مقابل یک ویزین دنبال کنید
-                                    زیرساخت ها
-                                    سیستم های مبتنی بر مشتری را به راحتی با منابع کلید در دست هدف قرار دهید. سندیکای
-                                    مشترک
-                                    فرصت های متمرکز برای تحویل های تعاملی. با قاطعیت مبتنی بر مشتری
-                                    Infomediaries از طریق MindShare مشترک. خدمات متا را به طور کامل ایجاد کنید
-                                    از طریق ویژگی های قانع کننده.
-                                </p>
-                            </div>
-                            <div class="social-wrapper">
-                                <span class="title">
-                                    سوشال مدیا
-                                </span>
-                                <div class="blog-social">
-                                    <a href="https://www.facebook.com/">
-                                        <i class="fa-brands fa-facebook-f">
-                                        </i>
-                                    </a>
-                                    <a href="https://x.com/?lang=en">
-                                        <i class="fa-brands fa-twitter">
-                                        </i>
-                                    </a>
-                                    <a href="https://www.instagram.com/">
-                                        <i class="fa-brands fa-instagram">
-                                        </i>
-                                    </a>
-                                    <a href="https://dribbble.com/">
-                                        <i class="fa-regular fa-basketball">
-                                        </i>
-                                    </a>
-                                </div>
-                            </div>
-                    </div>
-                </div>
-                </article>
-                <div class="comments-wrapper-box">
-                    <h3 class="comment-header-title">
-                        3 نظر
-                    </h3>
-                    <div class="comments-wrapper">
-                        <div class="comment-box">
-                            <div class="thumb">
-                                <img alt="image" src="assets/imgs/client/client-19.webp" />
-                            </div>
-                            <div class="content">
-                                <button class="reply-btn">
-                                    پاسخ
-                                    <i class="fa-regular fa-reply" style="transform: rotate(180deg) rotateX(180deg);">
-                                    </i>
-                                </button>
-                                <span class="date">
-                                    ۱۰ تیر ۱۴۰۴
-                                </span>
-                                <h3 class="name">
-                                    دانیال دهدشتی
-                                </h3>
-                                <p class="text">
-                                    به طور مشترک توانمند سازی تجارت الکترونیکی چند منظوره برای آینده نگر
-                                    برنامه ها در حالی که سناریوهای هم افزایی.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="comment-form-wrapper-box">
-                    <div class="comment-form-wrapper">
-                        <h3 class="comment-form-title">
-                            پاسخ دهید
-                        </h3>
-                        <div class="comment-form-box">
-                            <form action="#">
-                                <div class="comment-formwrap">
-                                    <div class="comment-formfield">
-                                        <input id="Name" name="Name" placeholder="نام شما" type="text" />
-                                        <i class="fa-regular fa-user">
-                                        </i>
+                        </article>
+                        <div class="comments-wrapper-box">
+                            <h3 class="comment-header-title">
+                                3 نظر
+                            </h3>
+                            <div class="comments-wrapper">
+                                <div class="comment-box">
+                                    <div class="thumb">
+                                        <img alt="image" src="{% static 'imgs/client/client-19.webp' %}" />
                                     </div>
-                                    <div class="comment-formfield">
-                                        <input id="Email" name="Email" placeholder="آدرس ایمیل" type="text" />
-                                        <i class="fa-regular fa-envelope">
-                                        </i>
-                                    </div>
-                                    <div class="comment-formfield span-2">
-                                        <textarea id="message" name="message"
-                                            placeholder="در مورد پروژه خود برای ما بگویید ..."></textarea>
-                                        <i class="fa-regular fa-pen">
-                                        </i>
-                                    </div>
-                                </div>
-                                <div class="submit-btn">
-                                    <button class="rr-btn" type="submit">
-                                        <span class="btn-wrap">
-                                            <span class="text-one">
-                                                ارسال نظر
-                                            </span>
-                                            <span class="text-two">
-                                                ارسال نظر
-                                            </span>
-                                        </span>
-                                    </button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="blog-sidebar-wrapper-box">
-            <div class="blog-sidebar-wrapper fade-anim">
-                <div class="blog-sidebar-box">
-                    <h3 class="sidebar-title">
-                        اینجا جستجو کنید
-                    </h3>
-                    <div class="sidebar-search-box">
-                        <form action="#" class="sidebar-search-form">
-                            <div class="input-field">
-                                <input placeholder="جستجو ..." type="text" />
-                                <button class="search-btn" type="submit">
-                                    <i class="fa-solid fa-magnifying-glass">
-                                    </i>
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <div class="blog-sidebar-box">
-                    <h3 class="sidebar-title">
-                        پست های اخیر
-                    </h3>
-                    <div class="sidebar-blog-wrapper-box">
-                        <div class="sidebar-blog-wrapper">
-                            <article class="sidebar-blog">
-                                <div class="thumb">
-                                    <a href="{% url 'blogs:blog_detail' blog.slug %}">
-                                        <img alt="blog image" src="{{blog.photo.url}}" />
-                                    </a>
-                                </div>
-                                <div class="content">
-                                    <div class="meta">
-                                        <span class="author">
-                                            <i class="fa-regular fa-user">
+                                    <div class="content">
+                                        <button class="reply-btn">
+                                            پاسخ
+                                            <i class="fa-regular fa-reply"
+                                                style="transform: rotate(180deg) rotateX(180deg);">
                                             </i>
-                                            {{blog.author}}
+                                        </button>
+                                        <span class="date">
+                                            ۱۰ تیر ۱۴۰۴
                                         </span>
+                                        <h3 class="name">
+                                            دانیال دهدشتی
+                                        </h3>
+                                        <p class="text">
+                                            به طور مشترک توانمند سازی تجارت الکترونیکی چند منظوره برای آینده نگر
+                                            برنامه ها در حالی که سناریوهای هم افزایی.
+                                        </p>
                                     </div>
-                                    <h2 class="title">
-                                        <a href="{% url 'blogs:blog_detail' blog.slug %}">
-                                            {{blog.title}}
-                                        </a>
-                                    </h2>
                                 </div>
-                            </article>
+                            </div>
+                        </div>
+                        <div class="comment-form-wrapper-box">
+                            <div class="comment-form-wrapper">
+                                <h3 class="comment-form-title">
+                                    ارسال نظر
+                                </h3>
+                                <div class="comment-form-box">
+                                    <form action="#">
+                                        <div class="comment-formwrap">
+                                            <div class="comment-formfield">
+                                                <input id="Name" name="Name" placeholder="نام شما" type="text" />
+                                                <i class="fa-regular fa-user">
+                                                </i>
+                                            </div>
+                                            <div class="comment-formfield">
+                                                <input id="Email" name="Email" placeholder="آدرس ایمیل" type="text" />
+                                                <i class="fa-regular fa-envelope">
+                                                </i>
+                                            </div>
+                                            <div class="comment-formfield span-2">
+                                                <textarea id="message" name="message"
+                                                    placeholder="در مورد پروژه خود برای ما بگویید ..."></textarea>
+                                                <i class="fa-regular fa-pen">
+                                                </i>
+                                            </div>
+                                        </div>
+                                        <div class="submit-btn">
+                                            <button class="rr-btn" type="submit">
+                                                <span class="btn-wrap">
+                                                    <span class="text-one">
+                                                        ارسال نظر
+                                                    </span>
+                                                    <span class="text-two">
+                                                        ارسال نظر
+                                                    </span>
+                                                </span>
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="blog-sidebar-box">
-                    <h3 class="sidebar-title">
-                        بندی دسته
-                    </h3>
-                    <div class="sidebar-category-box">
-                        <ul class="sidebar-category-list">
-                            {% for category in categories %}
-                            <li>
-                                <a href="blog.html">
-                                    {{ category.name }}
-                                    <i class="fa-solid fa-arrow-left">
-                                    </i>
-                                </a>
-                            </li>
-                            {% endfor %}
-                        </ul>
+                <div class="blog-sidebar-wrapper-box">
+                    <div class="blog-sidebar-wrapper fade-anim">
+                        <div class="blog-sidebar-box">
+                            <h3 class="sidebar-title">
+                                پست های اخیر
+                            </h3>
+                            <div class="sidebar-blog-wrapper-box">
+                                <div class="sidebar-blog-wrapper">
+                                    {% for blog in recent_blogs %}
+                                    <article class="sidebar-blog">
+                                        <div class="thumb">
+                                            <a href="{% url 'blogs:blog_detail' blog.slug %}">
+                                                <img alt="blog image" src="{{blog.photo.url}}" />
+                                            </a>
+                                        </div>
+                                        <div class="content">
+                                            <div class="meta">
+                                                <span class="author">
+                                                    <i class="fa-regular fa-user">
+                                                    </i>
+                                                    {{blog.author}}
+                                                </span>
+                                            </div>
+                                            <h2 class="title">
+                                                <a href="{% url 'blogs:blog_detail' blog.slug %}">
+                                                    {{blog.title}}
+                                                </a>
+                                            </h2>
+                                        </div>
+                                    </article>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    </div>
     </div>
     <!-- blog-details area end  -->
 </main>
