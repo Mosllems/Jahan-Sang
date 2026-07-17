@@ -10657,6 +10657,27 @@ section {
   gap: 30px;
 }
 
+.blog-empty-state {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 22px;
+  background-color: #F2F2F5;
+  border-radius: 8px;
+}
+.blog-empty-state-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--theme);
+  font-size: 18px;
+}
+.blog-empty-state-text {
+  font-size: 15px;
+  color: var(--black-2);
+  margin: 0;
+}
+
 .blog-4 {
   background-color: var(--white);
   border-radius: 10px;

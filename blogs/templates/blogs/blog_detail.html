@@ -203,7 +203,7 @@
                         <div class="sidebar-blog-wrapper">
                             <article class="sidebar-blog">
                                 <div class="thumb">
-                                    <a href="blog-details.html">
+                                    <a href="{% url 'blogs:blog_detail' blog.slug %}">
                                         <img alt="blog image" src="{{blog.photo.url}}" />
                                     </a>
                                 </div>
@@ -216,7 +216,7 @@
                                         </span>
                                     </div>
                                     <h2 class="title">
-                                        <a href="blog-details.html">
+                                        <a href="{% url 'blogs:blog_detail' blog.slug %}">
                                             {{blog.title}}
                                         </a>
                                     </h2>

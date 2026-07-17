@@ -54,7 +54,7 @@
                                     <span class="date">
                                         <i class="fa-regular fa-calendar">
                                         </i>
-                                        {{ blog.datetime_modified|date:"d M Y" }}
+                                        {{ blog.datetime_modified|date:"Y/m/d" }}
                                     </span>
                                     <span class="author">
                                         <i class="fa-regular fa-user">
@@ -63,7 +63,7 @@
                                     </span>
                                 </div>
                                 <h2 class="title">
-                                    <a href="blog-details.html">
+                                    <a href="{% url 'blogs:blog_detail' blog.slug %}">
                                         {{ blog.title }}
                                     </a>
                                 </h2>
@@ -86,26 +86,35 @@
                                 </a>
                             </div>
                         </article>
+                        {% empty %}
+                        <div class="blog-empty-state">
+                            <span class="blog-empty-state-icon">
+                                <i class="fa-regular fa-folder-open"></i>
+                            </span>
+                            <p class="blog-empty-state-text">
+                                هنوز هیچ مقاله‌ای در این دسته‌بندی وجود ندارد.
+                            </p>
+                        </div>
                         {% endfor %}
                     </div>
                     <div class="blog-list-footer">
                         <div class="rr-pagination fade-anim">
-                            <a href="#">
-                                01
+                            {% if page_obj.has_previous %}
+                                <a href="?page={{ page_obj.previous_page_number }}&sort={{ request.GET.sort }}">
+                                    <i class="fa-solid fa-angles-right">
+                                    </i>
+                                </a>
+                            {% endif %}
+                            <a href="?page={{ page_obj.number}}&sort={{ request.GET.sort }}">
+                                {{ page_obj.number }}
+                            
                             </a>
-                            <a href="#">
-                                02
-                            </a>
-                            <a href="#">
-                                03
-                            </a>
-                            <a href="#">
-                                04
-                            </a>
-                            <a href="#">
-                                <i class="fa-solid fa-angles-left">
-                                </i>
-                            </a>
+                            {% if page_obj.has_next %}
+                                <a href="?page={{page_obj.next_page_number}}&sort={{ request.GET.sort }}">
+                                    <i class="fa-solid fa-angles-left">
+                                    </i>
+                                </a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -133,10 +142,10 @@
                             </h3>
                             <div class="sidebar-blog-wrapper-box">
                                 <div class="sidebar-blog-wrapper">
-                                    {% for blog in blogs %}
+                                    {% for blog in recent_blogs %}
                                     <article class="sidebar-blog">
                                         <div class="thumb">
-                                            <a href="blog-details.html">
+                                            <a href="{% url 'blogs:blog_detail' blog.slug %}">
                                                 <img alt="blog image" src="{{ blog.photo.url }}" />
                                             </a>
                                         </div>
@@ -149,7 +158,7 @@
                                                 </span>
                                             </div>
                                             <h2 class="title">
-                                                <a href="blog-details.html">
+                                                <a href="{% url 'blogs:blog_detail' blog.slug %}">
                                                     {{ blog.title }}
                                                 </a>
                                             </h2>
@@ -162,20 +171,20 @@
 
                         <div class="blog-sidebar-box">
                             <h3 class="sidebar-title">
-                                بندی دسته
+                               بندی دسته
                             </h3>
                             <div class="sidebar-category-box">
-                                {% for category in categories %}
                                 <ul class="sidebar-category-list">
+                                    {% for category in categories %}
                                     <li>
-                                        <a href="blog.html">
+                                        <a href="?sort={{ category.slug }}">
                                             {{ category.name }}
                                             <i class="fa-solid fa-arrow-left">
                                             </i>
                                         </a>
                                     </li>
+                                    {% endfor %}
                                 </ul>
-                                {% endfor %}
                             </div>
                         </div>
                     </div>

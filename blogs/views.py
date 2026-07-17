@@ -5,16 +5,23 @@ from blogs.models import Blog, Category
 
 
 class BlogView(generic.ListView):
+    paginate_by = 4
     model = Blog
     template_name = "blogs/blog.html"
 
     def get_queryset(self):
-        return Blog.objects.select_related('category', 'author').all()
+        queryset = Blog.objects.select_related('category', 'author').all()
+        sorted_blogs = self.request.GET.get('sort')
+        if sorted_blogs:
+            queryset = queryset.filter(category__slug=sorted_blogs)
+
+        return queryset
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['categories'] = Category.objects.all()
-        context['blogs'] = self.get_queryset()
+        context['blogs'] = context['object_list']
+        context['recent_blogs'] = self.get_queryset()[:3]
         return context
 
 
