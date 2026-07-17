@@ -6868,6 +6868,11 @@ section {
   position: relative;
 }
 
+.project-2-wrapper.project-2-single .project-2-box {
+  max-width: 454px;
+  margin: 0 auto;
+}
+
 @media only screen and (max-width: 1919px) {
   .project-2-nav {
     display: flex;
