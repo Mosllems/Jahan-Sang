@@ -27,7 +27,7 @@
                                 </a>
                             </li>
                             <li>
-                             وبلاگ
+                                وبلاگ
                             </li>
                         </ul>
                     </div>
@@ -42,10 +42,11 @@
             <div class="blog-list-area-inner section-spacing">
                 <div class="blog-list-wrapper-box">
                     <div class="blog-list-wrapper">
+                        {% for blog in blogs %}
                         <article class="blog-4 fade-anim">
                             <div class="thumb">
-                                <a href="blog-details.html">
-                                    <img alt="blog image" src="{% static 'imgs/blog/blog-11.webp' %}" />
+                                <a href="{% url 'blogs:blog_detail' blog.slug %}">
+                                    <img alt="blog image" src="{{ blog.photo.url }}" />
                                 </a>
                             </div>
                             <div class="content">
@@ -53,25 +54,23 @@
                                     <span class="date">
                                         <i class="fa-regular fa-calendar">
                                         </i>
-                                        ۲۴ شهریور ۱۴۰۴
+                                        {{ blog.datetime_modified|date:"d M Y" }}
                                     </span>
                                     <span class="author">
                                         <i class="fa-regular fa-user">
                                         </i>
-                                        توسط مدیر
+                                        {{blog.author}}
                                     </span>
                                 </div>
                                 <h2 class="title">
                                     <a href="blog-details.html">
-                                        مزایای خدمات فناوری اطلاعات برای مشاغل کوچک
+                                        {{ blog.title }}
                                     </a>
                                 </h2>
                                 <p class="text">
-                                    جوهر اصلی راه حل های IT در نقش محوری آنها در تجارت نهفته است
-                                    تحول این راه حل ها به عنوان کاتالیزور برای بهینه سازی عملیاتی ، ساده سازی می شوند
-                                    فرآیندهای پیچیده و تسریع در بهره وری. با استفاده از فن آوری های برش ...
+                                    {{ blog.content|truncatewords:20 }}
                                 </p>
-                                <a class="rr-btn" href="blog-details.html">
+                                <a class="rr-btn" href="{% url 'blogs:blog_detail' blog.slug %}">
                                     <span class="btn-wrap">
                                         <span class="text-one">
                                             جزئیات را بخوانید
@@ -87,141 +86,7 @@
                                 </a>
                             </div>
                         </article>
-                        <article class="blog-4 fade-anim">
-                            <div class="thumb">
-                                <a href="blog-details.html">
-                                    <img alt="blog image" src="{% static 'imgs/blog/blog-12.webp' %}" />
-                                </a>
-                            </div>
-                            <div class="content">
-                                <div class="meta">
-                                    <span class="date">
-                                        <i class="fa-regular fa-calendar">
-                                        </i>
-                                        ۲۴ شهریور ۱۴۰۴
-                                    </span>
-                                    <span class="author">
-                                        <i class="fa-regular fa-user">
-                                        </i>
-                                        توسط مدیر
-                                    </span>
-                                </div>
-                                <h2 class="title">
-                                    <a href="blog-details.html">
-                                        10 تهدید امنیت سایبری برتر هر مشاغل
-                                    </a>
-                                </h2>
-                                <p class="text">
-                                    جوهر اصلی راه حل های IT در نقش محوری آنها در تجارت نهفته است
-                                    تحول این راه حل ها به عنوان کاتالیزور برای بهینه سازی عملیاتی ، ساده سازی می شوند
-                                    فرآیندهای پیچیده و تسریع در بهره وری. با استفاده از فن آوری های برش ...
-                                </p>
-                                <a class="rr-btn" href="blog-details.html">
-                                    <span class="btn-wrap">
-                                        <span class="text-one">
-                                            جزئیات را بخوانید
-                                            <i class="fa-solid fa-angles-left">
-                                            </i>
-                                        </span>
-                                        <span class="text-two">
-                                            جزئیات را بخوانید
-                                            <i class="fa-solid fa-angles-left">
-                                            </i>
-                                        </span>
-                                    </span>
-                                </a>
-                            </div>
-                        </article>
-                        <article class="blog-4 fade-anim">
-                            <div class="thumb">
-                                <a href="blog-details.html">
-                                    <img alt="blog image" src="{% static 'imgs/blog/blog-13.webp' %}" />
-                                </a>
-                            </div>
-                            <div class="content">
-                                <div class="meta">
-                                    <span class="date">
-                                        <i class="fa-regular fa-calendar">
-                                        </i>
-                                        ۲۴ شهریور ۱۴۰۴
-                                    </span>
-                                    <span class="author">
-                                        <i class="fa-regular fa-user">
-                                        </i>
-                                        توسط مدیر
-                                    </span>
-                                </div>
-                                <h2 class="title">
-                                    <a href="blog-details.html">
-                                        از سیستم های میراث گرفته تا زیرساخت های مدرن فناوری اطلاعات
-                                    </a>
-                                </h2>
-                                <p class="text">
-                                    جوهر اصلی راه حل های IT در نقش محوری آنها در تجارت نهفته است
-                                    تحول این راه حل ها به عنوان کاتالیزور برای بهینه سازی عملیاتی ، ساده سازی می شوند
-                                    فرآیندهای پیچیده و تسریع در بهره وری. با استفاده از فن آوری های برش ...
-                                </p>
-                                <a class="rr-btn" href="blog-details.html">
-                                    <span class="btn-wrap">
-                                        <span class="text-one">
-                                            جزئیات را بخوانید
-                                            <i class="fa-solid fa-angles-left">
-                                            </i>
-                                        </span>
-                                        <span class="text-two">
-                                            جزئیات را بخوانید
-                                            <i class="fa-solid fa-angles-left">
-                                            </i>
-                                        </span>
-                                    </span>
-                                </a>
-                            </div>
-                        </article>
-                        <article class="blog-4 fade-anim">
-                            <div class="thumb">
-                                <a href="blog-details.html">
-                                    <img alt="blog image" src="{% static 'imgs/blog/blog-14.webp' %}" />
-                                </a>
-                            </div>
-                            <div class="content">
-                                <div class="meta">
-                                    <span class="date">
-                                        <i class="fa-regular fa-calendar">
-                                        </i>
-                                        ۲۴ شهریور ۱۴۰۴
-                                    </span>
-                                    <span class="author">
-                                        <i class="fa-regular fa-user">
-                                        </i>
-                                        توسط مدیر
-                                    </span>
-                                </div>
-                                <h2 class="title">
-                                    <a href="blog-details.html">
-                                        بهترین روشها برای امنیت و انطباق
-                                    </a>
-                                </h2>
-                                <p class="text">
-                                    جوهر اصلی راه حل های IT در نقش محوری آنها در تجارت نهفته است
-                                    تحول این راه حل ها به عنوان کاتالیزور برای بهینه سازی عملیاتی ، ساده سازی می شوند
-                                    فرآیندهای پیچیده و تسریع در بهره وری. با استفاده از فن آوری های برش ...
-                                </p>
-                                <a class="rr-btn" href="blog-details.html">
-                                    <span class="btn-wrap">
-                                        <span class="text-one">
-                                            جزئیات را بخوانید
-                                            <i class="fa-solid fa-angles-left">
-                                            </i>
-                                        </span>
-                                        <span class="text-two">
-                                            جزئیات را بخوانید
-                                            <i class="fa-solid fa-angles-left">
-                                            </i>
-                                        </span>
-                                    </span>
-                                </a>
-                            </div>
-                        </article>
+                        {% endfor %}
                     </div>
                     <div class="blog-list-footer">
                         <div class="rr-pagination fade-anim">
@@ -253,7 +118,7 @@
                             <div class="sidebar-search-box">
                                 <form action="#" class="sidebar-search-form">
                                     <div class="input-field">
-                                        <input placeholder="ایمیل خود را وارد کنید" type="email" />
+                                        <input placeholder="جستجو ..." type="text" />
                                         <button class="search-btn" type="submit">
                                             <i class="fa-solid fa-magnifying-glass">
                                             </i>
@@ -268,10 +133,11 @@
                             </h3>
                             <div class="sidebar-blog-wrapper-box">
                                 <div class="sidebar-blog-wrapper">
+                                    {% for blog in blogs %}
                                     <article class="sidebar-blog">
                                         <div class="thumb">
                                             <a href="blog-details.html">
-                                                <img alt="blog image" src="{% static 'imgs/blog/blog-15.webp' %}" />
+                                                <img alt="blog image" src="{{ blog.photo.url }}" />
                                             </a>
                                         </div>
                                         <div class="content">
@@ -279,95 +145,37 @@
                                                 <span class="author">
                                                     <i class="fa-regular fa-user">
                                                     </i>
-                                                    توسط امیرارسلان رهنما
+                                                    {{blog.author}}
                                                 </span>
                                             </div>
                                             <h2 class="title">
                                                 <a href="blog-details.html">
-                                                    راهنمای نهایی برای انتخاب
-                                                    درست ارائه دهنده خدمات فناوری اطلاعات
+                                                    {{ blog.title }}
                                                 </a>
                                             </h2>
                                         </div>
                                     </article>
-                                    <article class="sidebar-blog">
-                                        <div class="thumb">
-                                            <a href="blog-details.html">
-                                                <img alt="blog image" src="{% static 'imgs/blog/blog-16.webp' %}" />
-                                            </a>
-                                        </div>
-                                        <div class="content">
-                                            <div class="meta">
-                                                <span class="author">
-                                                    <i class="fa-regular fa-user">
-                                                    </i>
-                                                    توسط امیرارسلان رهنما
-                                                </span>
-                                            </div>
-                                            <h2 class="title">
-                                                <a href="blog-details.html">
-                                                    چرا پشتیبان گیری داده ها و فاجعه
-                                                    بازیابی غیر قابل مذاکره است
-                                                </a>
-                                            </h2>
-                                        </div>
-                                    </article>
-                                    <article class="sidebar-blog">
-                                        <div class="thumb">
-                                            <a href="blog-details.html">
-                                                <img alt="blog image" src="{% static 'imgs/blog/blog-17.webp' %}" />
-                                            </a>
-                                        </div>
-                                        <div class="content">
-                                            <div class="meta">
-                                                <span class="author">
-                                                    <i class="fa-regular fa-user">
-                                                    </i>
-                                                    توسط امیرارسلان رهنما
-                                                </span>
-                                            </div>
-                                            <h2 class="title">
-                                                <a href="blog-details.html">
-                                                    آنچه شرکت های در حال رشد نیاز دارند
-                                                    دانستن
-                                                </a>
-                                            </h2>
-                                        </div>
-                                    </article>
+                                    {% endfor %}
                                 </div>
                             </div>
                         </div>
+
                         <div class="blog-sidebar-box">
                             <h3 class="sidebar-title">
-                                برچسب های محبوب
+                                بندی دسته
                             </h3>
-                            <div class="sidebar-tags-box">
-                                <div class="sidebar-tags">
-                                    <a class="tag" href="blog.html">
-                                        مشورت
-                                    </a>
-                                    <a class="tag" href="blog.html">
-                                        نویسنده
-                                    </a>
-                                    <a class="tag" href="blog.html">
-                                        مشاوره
-                                    </a>
-                                    <a class="tag" href="blog.html">
-                                        خیانت
-                                    </a>
-                                    <a class="tag" href="blog.html">
-                                        خانواده
-                                    </a>
-                                    <a class="tag" href="blog.html">
-                                        سلامت
-                                    </a>
-                                    <a class="tag" href="blog.html">
-                                        داوری
-                                    </a>
-                                    <a class="tag" href="blog.html">
-                                        راه حل
-                                    </a>
-                                </div>
+                            <div class="sidebar-category-box">
+                                {% for category in categories %}
+                                <ul class="sidebar-category-list">
+                                    <li>
+                                        <a href="blog.html">
+                                            {{ category.name }}
+                                            <i class="fa-solid fa-arrow-left">
+                                            </i>
+                                        </a>
+                                    </li>
+                                </ul>
+                                {% endfor %}
                             </div>
                         </div>
                     </div>
