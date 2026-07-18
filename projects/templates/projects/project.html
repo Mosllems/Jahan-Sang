@@ -41,27 +41,39 @@
     <section class="project-3-area">
         <div class="container rr-container-1410">
             <div class="project-3-area-inner section-spacing">
+                <div class="project-filter-tabs fade-anim">
+                    <a href="{% url 'projects:project' %}" class="{% if not request.GET.sort %}active{% endif %}">
+                        همه
+                    </a>
+                    {% for category in categories %}
+                    <a href="?sort={{ category.slug }}" class="{% if request.GET.sort == category.slug %}active{% endif %}">
+                        {{ category.name }}
+                    </a>
+                    {% endfor %}
+                </div>
                 <div class="project-3-wrapper-box">
                     <div class="project-3-wrapper">
+                        {% for project in projects %}
                         <div class="project-3-box fade-anim">
                             <div class="area-bg">
                                 <img alt="image" src="{% static 'imgs/shape/shape-23.webp' %}" />
                             </div>
                             <div class="thumb">
-                                <a href="project-details.html">
-                                    <img alt="image" src="{% static 'imgs/project/project-8.webp' %}" />
+                                <a href="#">
+                                    {% if project.cover_image %}
+                                    <img alt="image" src="{{ project.cover_image.image.url }}" />
+                                    {% endif %}
                                 </a>
                             </div>
                             <div class="content-wrapper">
                                 <div class="content">
                                     <h3 class="title">
-                                        <a href="project-details.html">
-                                            بهینه سازی خدمات فناوری اطلاعات مبتنی بر پروژه برای
-                                            پیشرفته
+                                        <a href="#">
+                                            {{ project.title }}
                                         </a>
                                     </h3>
                                     <div class="btn-wrapper">
-                                        <a class="rr-btn" href="project-details.html">
+                                        <a class="rr-btn" href="#">
                                             <span class="btn-wrap">
                                                 <span class="text-one">
                                                     مشاهده پروژه
@@ -79,206 +91,35 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="project-3-box fade-anim">
-                            <div class="area-bg">
-                                <img alt="image" src="{% static 'imgs/shape/shape-23.webp' %}" />
-                            </div>
-                            <div class="thumb">
-                                <a href="project-details.html">
-                                    <img alt="image" src="{% static 'imgs/project/project-9.webp' %}" />
-                                </a>
-                            </div>
-                            <div class="content-wrapper">
-                                <div class="content">
-                                    <h3 class="title">
-                                        <a href="project-details.html">
-                                            مهاجرت ابری و بهینه سازی زیرساخت ها
-                                            برای شرکت
-                                        </a>
-                                    </h3>
-                                    <div class="btn-wrapper">
-                                        <a class="rr-btn" href="project-details.html">
-                                            <span class="btn-wrap">
-                                                <span class="text-one">
-                                                    مشاهده پروژه
-                                                    <i class="fa-solid fa-arrow-left">
-                                                    </i>
-                                                </span>
-                                                <span class="text-two">
-                                                    مشاهده پروژه
-                                                    <i class="fa-solid fa-arrow-left">
-                                                    </i>
-                                                </span>
-                                            </span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
+                        {% empty %}
+                        <div class="blog-empty-state">
+                            <span class="blog-empty-state-icon">
+                                <i class="fa-regular fa-folder-open"></i>
+                            </span>
+                            <p class="blog-empty-state-text">
+                                هیچ پروژه‌ای در این دسته‌بندی یافت نشد.
+                            </p>
                         </div>
-                        <div class="project-3-box fade-anim">
-                            <div class="area-bg">
-                                <img alt="image" src="{% static 'imgs/shape/shape-23.webp' %}" />
-                            </div>
-                            <div class="thumb">
-                                <a href="project-details.html">
-                                    <img alt="image" src="{% static 'imgs/project/project-10.webp' %}" />
-                                </a>
-                            </div>
-                            <div class="content-wrapper">
-                                <div class="content">
-                                    <h3 class="title">
-                                        <a href="project-details.html">
-                                            توسعه نرم افزار برای خودکار سازی عملیات و
-                                            تقویت کردن
-                                        </a>
-                                    </h3>
-                                    <div class="btn-wrapper">
-                                        <a class="rr-btn" href="project-details.html">
-                                            <span class="btn-wrap">
-                                                <span class="text-one">
-                                                    مشاهده پروژه
-                                                    <i class="fa-solid fa-arrow-left">
-                                                    </i>
-                                                </span>
-                                                <span class="text-two">
-                                                    مشاهده پروژه
-                                                    <i class="fa-solid fa-arrow-left">
-                                                    </i>
-                                                </span>
-                                            </span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="project-3-box fade-anim">
-                            <div class="area-bg">
-                                <img alt="image" src="{% static 'imgs/shape/shape-23.webp' %}" />
-                            </div>
-                            <div class="thumb">
-                                <a href="project-details.html">
-                                    <img alt="image" src="{% static 'imgs/project/project-11.webp' %}" />
-                                </a>
-                            </div>
-                            <div class="content-wrapper">
-                                <div class="content">
-                                    <h3 class="title">
-                                        <a href="project-details.html">
-                                            طراحی و استقرار شبکه مقیاس پذیر
-                                            معماری
-                                        </a>
-                                    </h3>
-                                    <div class="btn-wrapper">
-                                        <a class="rr-btn" href="project-details.html">
-                                            <span class="btn-wrap">
-                                                <span class="text-one">
-                                                    مشاهده پروژه
-                                                    <i class="fa-solid fa-arrow-left">
-                                                    </i>
-                                                </span>
-                                                <span class="text-two">
-                                                    مشاهده پروژه
-                                                    <i class="fa-solid fa-arrow-left">
-                                                    </i>
-                                                </span>
-                                            </span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="project-3-box fade-anim">
-                            <div class="area-bg">
-                                <img alt="image" src="{% static 'imgs/shape/shape-23.webp' %}" />
-                            </div>
-                            <div class="thumb">
-                                <a href="project-details.html">
-                                    <img alt="image" src="{% static 'imgs/project/project-12.webp' %}" />
-                                </a>
-                            </div>
-                            <div class="content-wrapper">
-                                <div class="content">
-                                    <h3 class="title">
-                                        <a href="project-details.html">
-                                            استراتژی تحول دیجیتال و اجرای
-                                            برای روند کار
-                                        </a>
-                                    </h3>
-                                    <div class="btn-wrapper">
-                                        <a class="rr-btn" href="project-details.html">
-                                            <span class="btn-wrap">
-                                                <span class="text-one">
-                                                    مشاهده پروژه
-                                                    <i class="fa-solid fa-arrow-left">
-                                                    </i>
-                                                </span>
-                                                <span class="text-two">
-                                                    مشاهده پروژه
-                                                    <i class="fa-solid fa-arrow-left">
-                                                    </i>
-                                                </span>
-                                            </span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="project-3-box fade-anim">
-                            <div class="area-bg">
-                                <img alt="image" src="{% static 'imgs/shape/shape-23.webp' %}" />
-                            </div>
-                            <div class="thumb">
-                                <a href="project-details.html">
-                                    <img alt="image" src="{% static 'imgs/project/project-13.webp' %}" />
-                                </a>
-                            </div>
-                            <div class="content-wrapper">
-                                <div class="content">
-                                    <h3 class="title">
-                                        <a href="project-details.html">
-                                            سرویس کامل پشتیبانی و کمک به میز کمک می کند
-                                            ادغام برای یکپارچه
-                                        </a>
-                                    </h3>
-                                    <div class="btn-wrapper">
-                                        <a class="rr-btn" href="project-details.html">
-                                            <span class="btn-wrap">
-                                                <span class="text-one">
-                                                    مشاهده پروژه
-                                                    <i class="fa-solid fa-arrow-left">
-                                                    </i>
-                                                </span>
-                                                <span class="text-two">
-                                                    مشاهده پروژه
-                                                    <i class="fa-solid fa-arrow-left">
-                                                    </i>
-                                                </span>
-                                            </span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        {% endfor %}
                     </div>
                 </div>
                 <div class="project-3-footer">
                     <div class="rr-pagination fade-anim">
-                        <a href="#">
-                            01
+                        {% if page_obj.has_previous %}
+                        <a href="?page={{ page_obj.previous_page_number }}&sort={{ request.GET.sort }}">
+                            <i class="fa-solid fa-angles-right">
+                            </i>
                         </a>
-                        <a href="#">
-                            02
+                        {% endif %}
+                        <a href="?page={{ page_obj.number }}&sort={{ request.GET.sort }}">
+                            {{ page_obj.number }}
                         </a>
-                        <a href="#">
-                            03
-                        </a>
-                        <a href="#">
-                            04
-                        </a>
-                        <a href="#">
+                        {% if page_obj.has_next %}
+                        <a href="?page={{ page_obj.next_page_number }}&sort={{ request.GET.sort }}">
                             <i class="fa-solid fa-angles-left">
                             </i>
                         </a>
+                        {% endif %}
                     </div>
                 </div>
             </div>
