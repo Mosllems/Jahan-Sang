@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}جزئیات وبلاگ{% endblock title %}
+{% block title %}جزئیات بلاگ{% endblock title %}
 
 {% block content %}
 
@@ -16,7 +16,7 @@
                 <div class="breadcrumb-content">
                     <div class="title-wrapper">
                         <h1 class="breadcrumb-title">
-                            جزئیات وبلاگ
+                            جزئیات بلاگ
                         </h1>
                     </div>
                     <div class="breadcrumb-wrapper">
@@ -27,7 +27,7 @@
                                 </a>
                             </li>
                             <li>
-                                جزئیات وبلاگ
+                                جزئیات بلاگ
                             </li>
                         </ul>
                     </div>
@@ -75,16 +75,16 @@
                             </h3>
                             <div class="comments-wrapper">
                                 <div class="comment-box">
-                                    <div class="thumb">
+                                    <!-- <div class="thumb">
                                         <img alt="image" src="{% static 'imgs/client/client-19.webp' %}" />
-                                    </div>
+                                    </div> -->
                                     <div class="content">
-                                        <button class="reply-btn">
+                                        <!-- <button class="reply-btn">
                                             پاسخ
                                             <i class="fa-regular fa-reply"
                                                 style="transform: rotate(180deg) rotateX(180deg);">
                                             </i>
-                                        </button>
+                                        </button> -->
                                         <span class="date">
                                             ۱۰ تیر ۱۴۰۴
                                         </span>
@@ -106,8 +106,9 @@
                                 </h3>
                                 <div class="comment-form-box">
                                     <form action="#">
+                                        {% csrf_token %}
                                         <div class="comment-formwrap">
-                                            <div class="comment-formfield">
+                                            <!-- <div class="comment-formfield">
                                                 <input id="Name" name="Name" placeholder="نام شما" type="text" />
                                                 <i class="fa-regular fa-user">
                                                 </i>
@@ -116,10 +117,10 @@
                                                 <input id="Email" name="Email" placeholder="آدرس ایمیل" type="text" />
                                                 <i class="fa-regular fa-envelope">
                                                 </i>
-                                            </div>
+                                            </div> -->
                                             <div class="comment-formfield span-2">
                                                 <textarea id="message" name="message"
-                                                    placeholder="در مورد پروژه خود برای ما بگویید ..."></textarea>
+                                                    placeholder="نظرتان را در مورد این بلاگ با ما به اشتراک بگذارید..."></textarea>
                                                 <i class="fa-regular fa-pen">
                                                 </i>
                                             </div>
@@ -146,7 +147,7 @@
                     <div class="blog-sidebar-wrapper fade-anim">
                         <div class="blog-sidebar-box">
                             <h3 class="sidebar-title">
-                                پست های اخیر
+                                بلاگ های اخیر
                             </h3>
                             <div class="sidebar-blog-wrapper-box">
                                 <div class="sidebar-blog-wrapper">
