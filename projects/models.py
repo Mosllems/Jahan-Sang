@@ -39,6 +39,8 @@ class Project(models.Model):
 
     @property
     def cover_image(self):
+        if hasattr(self, 'prefetched_covers'):
+            return self.prefetched_covers[0] if self.prefetched_covers else None
         return self.images.filter(is_cover=True).first() or self.images.first()
 
     class Meta:
