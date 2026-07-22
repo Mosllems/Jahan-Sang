@@ -23,3 +23,11 @@ class ProjectListView(generic.ListView):
         context = super().get_context_data(**kwargs)
         context['categories'] = ProjectCategory.objects.all()
         return context
+
+
+class ProjectDetailView(generic.DetailView):
+    model = Project
+    template_name = "projects/project_detail.html"
+    context_object_name = "project"
+
+

@@ -1,3 +1,6 @@
+from django.urls import register_converter
+
+
 class UnicodeSlugConverter:
     regex = r"[-\w]+"
 
@@ -6,3 +9,6 @@ class UnicodeSlugConverter:
 
     def to_url(self, value):
         return value
+
+
+register_converter(UnicodeSlugConverter, "uslug")
