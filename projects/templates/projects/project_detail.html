@@ -42,7 +42,9 @@
 			<div class="project-details-inner section-spacing-top">
 				<div class="project-details-thumb-wrapper">
 					<div class="project-details-thumb fade-anim" data-direction="left">
-						<img alt="image" src="{% static 'imgs/gallery/gallery-34.webp'%}" />
+						{% if project.cover_image %}
+						<img alt="image" src="{{ project.cover_image.image.url }}"/>
+						{% endif %}
 					</div>
 					<div class="project-details-meta fade-anim" data-direction="right">
 						<h3 class="meta-block-title">
@@ -59,7 +61,7 @@
 										مشتری ها:
 									</p>
 									<p class="text">
-										زهرا عطایی
+										{{ project.client }}
 									</p>
 								</div>
 							</div>
@@ -73,7 +75,7 @@
 										دسته:
 									</p>
 									<p class="text">
-										بازاریابی دیجیتال ، سئو
+										{{ project.category }}
 									</p>
 								</div>
 							</div>
@@ -87,7 +89,7 @@
 										تاریخ:
 									</p>
 									<p class="text">
-										۲۵ فروردین ۱۴۰۴
+										{{ project.datetime_modified|date:"Y/m/d" }}
 									</p>
 								</div>
 							</div>
@@ -101,7 +103,7 @@
 										آدرس:
 									</p>
 									<p class="text">
-										اصفهان، خیابان چهارباغ بالا
+										{{ project.location }}
 									</p>
 								</div>
 							</div>
@@ -110,40 +112,19 @@
 				</div>
 				<div class="proeject-details-info fade-anim">
 					<div class="gallery-wrapper">
-						<img alt="image" src="{% static 'imgs/gallery/gallery-35.webp'%}" />
-						<img alt="image" src="{% static 'imgs/gallery/gallery-36.webp'%}" />
-						<img alt="image" src="{% static 'imgs/gallery/gallery-37.webp'%}" />
+						{% for image in project.images.all %}
+							<img alt="image" src="{{image.image.url}}" />
+						{% endfor %}
 					</div>
 					<div class="text-wrapper">
 						<h3 class="info-title">
-							توسعه برنامه تلفن همراه
+							{{ project.title }}
 						</h3>
 						<p class="text">
-							لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است
-							چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی
-							تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد کتابهای زیادی در
-							شصت و سه درصد گذشته حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها
-							شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی
+							{{ project.description }}
 						</p>
-						<p class="text">
-							لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است
-							چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی
-							تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد
-						</p>
+						
 					</div>
-				</div>
-				<div class="proeject-details-info fade-anim">
-					<h3 class="info-title">
-						چالش پروژه
-					</h3>
-					<div class="text-wrapper">
-						<p class="text">
-							لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است
-							چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی
-							تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد
-						</p>
-					</div>
-
 				</div>
 			</div>
 		</div>

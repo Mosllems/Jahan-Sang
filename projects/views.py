@@ -30,4 +30,9 @@ class ProjectDetailView(generic.DetailView):
     template_name = "projects/project_detail.html"
     context_object_name = "project"
 
+    def get_queryset(self):
+        cover_prefetch = Prefetch('images', queryset=ProjectImage.objects.order_by('-is_cover', 'datetime_created'), to_attr='prefetched_covers')
+        queryset = Project.objects.select_related('category').prefetch_related(cover_prefetch)
+
+        return queryset
 
