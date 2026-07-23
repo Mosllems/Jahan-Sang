@@ -203,78 +203,42 @@
 				</div>
 				<div class="project-4-wrapper-box">
 					<div class="project-3-wrapper">
-						<div class="project-3-box fade-anim">
-							<div class="area-bg">
-								<img alt="image" src="assets/imgs/shape/shape-23.webp" />
-							</div>
-							<div class="thumb">
-								<a href="project-details.html">
-									<img alt="image" src="assets/imgs/project/project-8.webp" />
-								</a>
-							</div>
-							<div class="content-wrapper">
-								<div class="content">
-									<h3 class="title">
-										<a href="project-details.html">
-											بهینه سازی خدمات فناوری اطلاعات مبتنی بر پروژه برای
-											پیشرفته
-										</a>
-									</h3>
-									<div class="btn-wrapper">
-										<a class="rr-btn" href="project-details.html">
-											<span class="btn-wrap">
-												<span class="text-one">
-													مشاهده پروژه
-													<i class="fa-solid fa-arrow-left">
-													</i>
+						{% for project in other_projects %}
+							<div class="project-3-box fade-anim">
+								<div class="thumb">
+									<a href="{% url 'projects:project_detail' project.slug %}">
+										{% if project.cover_image %}
+										<img alt="{{ project.title }}" src="{{ project.cover_image.image.url }}" />
+										{% endif %}
+									</a>
+								</div>
+								<div class="content-wrapper">
+									<div class="content">
+										<h3 class="title">
+											<a href="{% url 'projects:project_detail' project.slug %}">
+												{{ project.title }}
+											</a>
+										</h3>
+										<div class="btn-wrapper">
+											<a class="rr-btn" href="{% url 'projects:project_detail' project.slug %}">
+												<span class="btn-wrap">
+													<span class="text-one">
+														مشاهده پروژه
+														<i class="fa-solid fa-arrow-left">
+														</i>
+													</span>
+													<span class="text-two">
+														مشاهده پروژه
+														<i class="fa-solid fa-arrow-left">
+														</i>
+													</span>
 												</span>
-												<span class="text-two">
-													مشاهده پروژه
-													<i class="fa-solid fa-arrow-left">
-													</i>
-												</span>
-											</span>
-										</a>
+											</a>
+										</div>
 									</div>
 								</div>
 							</div>
-						</div>
-						<div class="project-3-box fade-anim">
-							<div class="area-bg">
-								<img alt="image" src="assets/imgs/shape/shape-23.webp" />
-							</div>
-							<div class="thumb">
-								<a href="project-details.html">
-									<img alt="image" src="assets/imgs/project/project-11.webp" />
-								</a>
-							</div>
-							<div class="content-wrapper">
-								<div class="content">
-									<h3 class="title">
-										<a href="project-details.html">
-											طراحی و استقرار شبکه مقیاس پذیر
-											معماری
-										</a>
-									</h3>
-									<div class="btn-wrapper">
-										<a class="rr-btn" href="project-details.html">
-											<span class="btn-wrap">
-												<span class="text-one">
-													مشاهده پروژه
-													<i class="fa-solid fa-arrow-left">
-													</i>
-												</span>
-												<span class="text-two">
-													مشاهده پروژه
-													<i class="fa-solid fa-arrow-left">
-													</i>
-												</span>
-											</span>
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
+						{% endfor %}
 					</div>
 				</div>
 			</div>
