@@ -26,6 +26,7 @@
 	<link href="{% static 'css/style.css' %}" rel="stylesheet" />
 	<!-- Chat Widget CSS File -->
 	<link href="{% static 'css/chat-widget.css' %}" rel="stylesheet" />
+	{% block extra_css %}{% endblock extra_css %}
 </head>
 
 <body class="body-wrapper">
@@ -542,6 +543,7 @@
 	<!-- Chat Widget JS File -->
 	<script src="{% static 'js/chat-widget.js' %}">
 	</script>
+	{% block extra_js %}{% endblock extra_js %}
 </body>
 
 </html>

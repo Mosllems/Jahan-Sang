@@ -3,6 +3,32 @@
 
 {% block title %} جزئیات پروژه {% endblock title %}
 
+{% block extra_css %}
+<link href="{% static 'css/glightbox.min.css' %}" rel="stylesheet" />
+<style>
+	.gdownload {
+		position: absolute;
+		top: 15px;
+		right: 60px;
+		width: 40px;
+		height: 40px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: #fff;
+		font-size: 18px;
+		cursor: pointer;
+		opacity: 0.7;
+		transition: opacity 0.3s;
+		z-index: 99999;
+	}
+	.gdownload:hover {
+		opacity: 1;
+		color: #fff;
+	}
+</style>
+{% endblock extra_css %}
+
 {% block content %}
 
 <main>
@@ -43,7 +69,9 @@
 				<div class="project-details-thumb-wrapper">
 					<div class="project-details-thumb fade-anim" data-direction="left">
 						{% if project.cover_image %}
-						<img alt="image" src="{{ project.cover_image.image.url }}"/>
+						<a class="gallery-item glightbox" href="{{ project.cover_image.image.url }}" data-gallery="project-gallery">
+							<img alt="{{ project.title }}" src="{{ project.cover_image.image.url }}"/>
+						</a>
 						{% endif %}
 					</div>
 					<div class="project-details-meta fade-anim" data-direction="right">
@@ -113,7 +141,9 @@
 				<div class="proeject-details-info fade-anim">
 					<div class="gallery-wrapper">
 						{% for image in project.images.all %}
-							<img alt="image" src="{{image.image.url}}" />
+							<a class="gallery-item glightbox" href="{{ image.image.url }}" data-gallery="project-gallery">
+								<img alt="{{ project.title }}" src="{{ image.image.url }}" />
+							</a>
 						{% endfor %}
 					</div>
 					<div class="text-wrapper">
@@ -254,3 +284,56 @@
 </main>
 
 {% endblock content %}
+
+{% block extra_js %}
+<script src="{% static 'js/glightbox.min.js' %}"></script>
+<script>
+	function initProjectGallery() {
+		if (typeof GLightbox === "undefined") return;
+
+		var lightbox = GLightbox({
+			selector: ".glightbox",
+			touchNavigation: true,
+			loop: true,
+			zoomable: true,
+			draggable: true,
+			openEffect: "zoom",
+			closeEffect: "fade",
+			slideEffect: "slide"
+		});
+
+		function syncDownloadButton() {
+			var active = document.querySelector(".gslide.current .gslide-image img");
+			var btn = document.getElementById("glightbox-download");
+			if (active && btn) {
+				btn.setAttribute("href", active.getAttribute("src"));
+			}
+		}
+
+		lightbox.on("open", function () {
+			var toolbar = document.querySelector(".gclose");
+			if (toolbar && !document.getElementById("glightbox-download")) {
+				var dl = document.createElement("a");
+				dl.id = "glightbox-download";
+				dl.className = "gdownload";
+				dl.setAttribute("download", "");
+				dl.setAttribute("target", "_blank");
+				dl.setAttribute("title", "دانلود");
+				dl.innerHTML = '<i class="fa-solid fa-download"></i>';
+				toolbar.parentNode.insertBefore(dl, toolbar);
+			}
+			setTimeout(syncDownloadButton, 50);
+		});
+
+		lightbox.on("slide_changed", function () {
+			setTimeout(syncDownloadButton, 50);
+		});
+	}
+
+	if (document.readyState === "loading") {
+		document.addEventListener("DOMContentLoaded", initProjectGallery);
+	} else {
+		initProjectGallery();
+	}
+</script>
+{% endblock extra_js %}

@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s \"http://127.0.0.1:8123/static/css/style.css\")",
+      "Bash(node shot_cover.js)"
+    ]
+  }
+}
