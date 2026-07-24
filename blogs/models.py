@@ -38,9 +38,29 @@ class Blog(models.Model):
 
     def __str__(self):
         return self.title
-    
+
+    def get_absolute_url(self):
+        from django.urls import reverse
+        return reverse("blogs:blog_detail", kwargs={"slug": self.slug})
+
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.title, allow_unicode=True)
         super().save(*args, **kwargs)
 
+
+class Comment(models.Model):
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name="نویسنده", related_name="comments")
+    blog = models.ForeignKey(Blog, on_delete=models.CASCADE, verbose_name="بلاگ", related_name="comments")
+    text = models.TextField(verbose_name="متن")
+    is_approved = models.BooleanField(default=False, verbose_name="تأیید شده")
+    datetime_created = models.DateField(auto_now_add=True)
+    datetime_modified = models.DateField(auto_now=True)
+
+    class Meta:
+        verbose_name = "نظر"
+        verbose_name_plural = "نظرات"
+        ordering = ["-datetime_created"]
+
+    def __str__(self):
+        return str(self.author)

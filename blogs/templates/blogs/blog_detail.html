@@ -71,32 +71,26 @@
                         </article>
                         <div class="comments-wrapper-box">
                             <h3 class="comment-header-title">
-                                3 نظر
+                                {{ comments.count }} نظر
                             </h3>
                             <div class="comments-wrapper">
+                                {% for comment in comments %}
                                 <div class="comment-box">
-                                    <!-- <div class="thumb">
-                                        <img alt="image" src="{% static 'imgs/client/client-19.webp' %}" />
-                                    </div> -->
                                     <div class="content">
-                                        <!-- <button class="reply-btn">
-                                            پاسخ
-                                            <i class="fa-regular fa-reply"
-                                                style="transform: rotate(180deg) rotateX(180deg);">
-                                            </i>
-                                        </button> -->
                                         <span class="date">
-                                            ۱۰ تیر ۱۴۰۴
+                                            {{ comment.datetime_created|date:"Y/m/d" }}
                                         </span>
                                         <h3 class="name">
-                                            دانیال دهدشتی
+                                            {{ comment.author.username }}
                                         </h3>
                                         <p class="text">
-                                            به طور مشترک توانمند سازی تجارت الکترونیکی چند منظوره برای آینده نگر
-                                            برنامه ها در حالی که سناریوهای هم افزایی.
+                                            {{ comment.text }}
                                         </p>
                                     </div>
                                 </div>
+                                {% empty %}
+                                <p class="text">هنوز نظری ثبت نشده است. اولین نفری باشید که نظر می‌دهد!</p>
+                                {% endfor %}
                             </div>
                         </div>
                         <div class="comment-form-wrapper-box">
@@ -104,25 +98,40 @@
                                 <h3 class="comment-form-title">
                                     ارسال نظر
                                 </h3>
+
+                                {% if messages %}
+                                <div class="comment-messages" id="comment-messages">
+                                    {% for message in messages %}
+                                    <p class="comment-message {{ message.tags }}">{{ message }}</p>
+                                    {% endfor %}
+                                </div>
+                                <script>
+                                    setTimeout(function () {
+                                        var box = document.getElementById("comment-messages");
+                                        if (box) {
+                                            box.classList.add("is-hidden");
+                                            setTimeout(function () { box.remove(); }, 500);
+                                        }
+                                    }, 5000);
+                                </script>
+                                {% endif %}
+
+                                {% if user.is_authenticated %}
                                 <div class="comment-form-box">
-                                    <form action="#">
+                                    <form method="post" action="{% url 'blogs:blog_detail' blog.slug %}">
                                         {% csrf_token %}
                                         <div class="comment-formwrap">
-                                            <!-- <div class="comment-formfield">
-                                                <input id="Name" name="Name" placeholder="نام شما" type="text" />
-                                                <i class="fa-regular fa-user">
-                                                </i>
-                                            </div>
-                                            <div class="comment-formfield">
-                                                <input id="Email" name="Email" placeholder="آدرس ایمیل" type="text" />
-                                                <i class="fa-regular fa-envelope">
-                                                </i>
-                                            </div> -->
                                             <div class="comment-formfield span-2">
-                                                <textarea id="message" name="message"
-                                                    placeholder="نظرتان را در مورد این بلاگ با ما به اشتراک بگذارید..."></textarea>
+                                                {{ comment_form.text }}
                                                 <i class="fa-regular fa-pen">
                                                 </i>
+                                                {% if comment_form.text.errors %}
+                                                <div class="field-error">
+                                                    {% for error in comment_form.text.errors %}
+                                                    <span>{{ error }}</span>
+                                                    {% endfor %}
+                                                </div>
+                                                {% endif %}
                                             </div>
                                         </div>
                                         <div class="submit-btn">
@@ -139,6 +148,17 @@
                                         </div>
                                     </form>
                                 </div>
+                                {% else %}
+                                <div class="comment-login-prompt">
+                                    <p>برای ثبت نظر باید وارد حساب کاربری خود شوید.</p>
+                                    <a class="rr-btn" href="{% url 'account_login' %}?next={{ request.path }}">
+                                        <span class="btn-wrap">
+                                            <span class="text-one">ورود / ثبت‌نام</span>
+                                            <span class="text-two">ورود / ثبت‌نام</span>
+                                        </span>
+                                    </a>
+                                </div>
+                                {% endif %}
                             </div>
                         </div>
                     </div>

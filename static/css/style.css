@@ -14233,3 +14233,43 @@ section {
   background-color: var(--white);
   color: var(--theme);
 }
+
+/* blog comment extras */
+.comment-messages {
+  margin-bottom: 20px;
+  transition: opacity 0.5s ease;
+}
+.comment-messages.is-hidden {
+  opacity: 0;
+}
+.comment-message {
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-size: 14px;
+  margin: 0 0 10px;
+}
+.comment-message.success {
+  background-color: rgba(46, 160, 100, 0.1);
+  color: #2ea064;
+}
+.comment-message.error {
+  background-color: rgba(224, 62, 62, 0.1);
+  color: #e03e3e;
+}
+.comment-login-prompt {
+  padding: 26px;
+  background-color: #F7F6FB;
+  border-radius: 12px;
+  text-align: center;
+}
+.comment-login-prompt p {
+  margin-bottom: 16px;
+  font-size: 15px;
+  color: var(--black-2);
+}
+.comment-formfield .field-error span {
+  display: block;
+  color: #e03e3e;
+  font-size: 13px;
+  margin-top: 8px;
+}
