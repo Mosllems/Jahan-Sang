@@ -172,3 +172,15 @@ AUTH_USER_MODEL = 'accounts.CustomUser'
 # Chat widget / n8n integration
 N8N_WEBHOOK_URL = env("N8N_WEBHOOK_URL", default="")
 N8N_WEBHOOK_TIMEOUT = env.int("N8N_WEBHOOK_TIMEOUT", default=10)
+
+# allauth / account
+LOGIN_REDIRECT_URL = "pages:home"
+LOGOUT_REDIRECT_URL = "pages:home"
+ACCOUNT_LOGIN_METHODS = {"email"}
+ACCOUNT_SIGNUP_FIELDS = ["email*", "username*", "password1*", "password2*"]
+ACCOUNT_EMAIL_VERIFICATION = "none"
+ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_FORMS = {
+    "signup": "accounts.forms.CustomSignupForm",
+    "login": "accounts.forms.CustomLoginForm",
+}

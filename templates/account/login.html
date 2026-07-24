@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} ورود {% endblock title %}
+
+{% block content %}
+<main>
+    <!-- breadcrumb area start -->
+    <section class="breadcrumb-area">
+        <div class="breadcrumb-area-inner">
+            <div class="breadcrumb-bg">
+                <img alt="image" src="{% static 'imgs/gallery/gallery-29.webp' %}" />
+            </div>
+            <div class="container rr-container-1410">
+                <div class="breadcrumb-content">
+                    <div class="title-wrapper">
+                        <h1 class="breadcrumb-title">
+                            ورود به حساب
+                        </h1>
+                    </div>
+                    <div class="breadcrumb-wrapper">
+                        <ul class="rr-breadcrumb">
+                            <li>
+                                <a href="{% url 'pages:home' %}">خانه</a>
+                            </li>
+                            <li>ورود</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- breadcrumb area end -->
+
+    <!-- auth area start -->
+    <section class="auth-area section-spacing">
+        <div class="container rr-container-1410">
+            <div class="auth-box">
+                <h2 class="auth-title">ورود به حساب کاربری</h2>
+                <p class="auth-subtitle">
+                    حساب کاربری ندارید؟
+                    <a href="{% url 'account_signup' %}">ثبت‌نام کنید</a>
+                </p>
+
+                <form class="auth-form" method="post" action="{% url 'account_login' %}">
+                    {% csrf_token %}
+
+                    {% if form.non_field_errors %}
+                    <div class="auth-errors">
+                        {% for error in form.non_field_errors %}
+                        <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+
+                    {% for field in form.visible_fields %}
+                    <div class="auth-field{% if field.field.widget.input_type == 'checkbox' %} auth-field-checkbox{% endif %}">
+                        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                        {{ field }}
+                        {% if field.errors %}
+                        <div class="field-error">
+                            {% for error in field.errors %}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+
+                    {% if redirect_field_value %}
+                    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                    {% endif %}
+
+                    <button class="rr-btn auth-submit" type="submit">
+                        <span class="btn-wrap">
+                            <span class="text-one">ورود</span>
+                            <span class="text-two">ورود</span>
+                        </span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+    <!-- auth area end -->
+</main>
+{% endblock content %}

@@ -247,12 +247,23 @@
 								</nav>
 							</div>
 							<div class="header-2-cta">
-								<span class="call-box">
-									با ما تماس بگیرید:
-									<a href="tel:09123108563">
-										09123108563
+								{% if user.is_authenticated %}
+								<div class="header-auth">
+									<span class="header-user">
+										<i class="fa-regular fa-user"></i>
+										{{ user.username }}
+									</span>
+									<a class="header-auth-btn" href="{% url 'account_logout' %}">
+										خروج
+										<i class="fa-solid fa-arrow-right-from-bracket"></i>
 									</a>
-								</span>
+								</div>
+								{% else %}
+								<a class="header-auth-btn" href="{% url 'account_login' %}">
+									<i class="fa-regular fa-user"></i>
+									ورود / ثبت‌نام
+								</a>
+								{% endif %}
 							</div>
 							<div class="header-2-offfcanvas">
 								<button class="side-toggle">
