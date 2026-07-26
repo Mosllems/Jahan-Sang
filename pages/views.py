@@ -1,4 +1,5 @@
 import json
+from django.db.models.query import QuerySet
 from django.forms.models import BaseModelForm
 import requests
 import logging
@@ -11,6 +12,10 @@ from django.views import generic
 from django.views.decorators.http import require_POST
 from django.urls import reverse_lazy
 from django.contrib import messages
+from django.db.models import Prefetch
+
+from projects.models import Project, ProjectImage
+from blogs.models import Blog
 
 from .models import ContactForm
 from .forms import Contact
@@ -49,6 +54,22 @@ class ContactFormMixin:
 class HomeView(ContactFormMixin, generic.CreateView):
     template_name = "pages/home.html"
     success_url = reverse_lazy('pages:home')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        cover_prefetch = Prefetch(
+            'images',
+            queryset=ProjectImage.objects.order_by('-is_cover', 'datetime_created'),
+            to_attr='prefetched_covers',
+        )
+        context['recent_projects'] = (
+            Project.objects.select_related('category').prefetch_related(cover_prefetch)[:3]
+        )
+        context['recent_blogs'] = (
+            Blog.objects.select_related('category', 'author')[:2]
+        )
+        return context
 
 
 class AboutView(generic.TemplateView):

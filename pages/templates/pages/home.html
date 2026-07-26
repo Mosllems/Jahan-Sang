@@ -1165,34 +1165,37 @@
 		  </div>
 		 </div>
 		 <div class="project-2-wrapper-box fade-anim">
-		  <div class="project-2-wrapper project-2-single">
+		  <div class="project-2-wrapper">
+{% for project in recent_projects %}
 		   <div class="project-2-box">
 			<div class="thumb">
 			 <div class="action-btn">
-			  <a class="circle-arrow-btn" href="project-details.html">
+			  <a class="circle-arrow-btn" href="{% url 'projects:project_detail' project.slug %}">
 			   <i class="fa-solid fa-arrow-left">
 			   </i>
 			  </a>
 			 </div>
-			 <a href="project-details.html">
-			  <img alt="image" src="{% static 'imgs/project/project-5.webp' %}"/>
+			 <a href="{% url 'projects:project_detail' project.slug %}">
+			  {% if project.cover_image %}
+			  <img alt="{{ project.title }}" src="{{ project.cover_image.image.url }}"/>
+			  {% endif %}
 			 </a>
 			</div>
 			<div class="content">
 			 <span class="subtitle">
-			  استراتژی رشد ، مدل
+			  {{ project.category }}
 			 </span>
 			 <h3 class="title">
-			  <a href="project-details.html">
-			   نوآوری کسب و کار را هدایت کنید
+			  <a href="{% url 'projects:project_detail' project.slug %}">
+			   {{ project.title }}
 			  </a>
 			 </h3>
 			 <p class="text">
-			  این شامل نظارت و نظارت بر فناوری اطلاعات یک شرکت است
-							زیرساخت
+			  {{ project.description|truncatewords:15 }}
 			 </p>
 			</div>
 		   </div>
+			{% endfor %}
 		  </div>
 		 </div>
 		</div>
@@ -1287,73 +1290,39 @@
 		</div>
 		<div class="blog-2-wrapper-box">
 		 <div class="blog-2-wrapper">
+		  {% for blog in recent_blogs %}
 		  <article class="blog-2 fade-anim">
 		   <div class="thumb">
-			<a href="blog-details.html">
-			 <img alt="blog image" src="{% static 'imgs/blog/blog-5.webp' %}"/>
-			</a>
+		    <a href="{% url 'blogs:blog_detail' blog.slug %}">
+		     <img alt="{{ blog.title }}" src="{{ blog.photo.url }}"/>
+		    </a>
 		   </div>
 		   <div class="content">
-			<span class="tag">
-			 بازاریابی سئو
-			</span>
-			<h2 class="title">
-			 <a href="blog-details.html">
-			  چگونه خدمات جامع IT نوآوری را هدایت می کند ،
-						  کارآیی ، و
-						  رشد در عصر دیجیتال
-			 </a>
-			</h2>
-			<p class="text">
-			 خدمات مشاوره IT شامل مشاوره در مورد نحوه استفاده از بهترین فناوری است
-						برای رسیدن به اهداف خود این شامل توسعه استراتژی IT ، برنامه ریزی معماری سیستم ،
-						ارزیابی فناوری.
-			</p>
-			<div class="meta">
-			 <span class="date">
-			  ۱۵ مهر ۱۴۰۴
-			 </span>
-			 <span class="author">
-			  توسط
-			  <span class="name">
-			   ایلیا میرزایی
-			  </span>
-			 </span>
-			</div>
+		    <span class="tag">
+		     {{ blog.category }}
+		    </span>
+		    <h2 class="title">
+		     <a href="{% url 'blogs:blog_detail' blog.slug %}">
+		      {{ blog.title }}
+		     </a>
+		    </h2>
+		    <p class="text">
+		     {{ blog.text|truncatewords:25 }}
+		    </p>
+		    <div class="meta">
+		     <span class="date">
+		      {{ blog.datetime_created|date:"Y/m/d" }}
+		     </span>
+		     <span class="author">
+		      توسط
+		      <span class="name">
+		       {{ blog.author.username }}
+		      </span>
+		     </span>
+		    </div>
 		   </div>
 		  </article>
-		  <article class="blog-2 fade-anim">
-		   <div class="thumb">
-			<a href="blog-details.html">
-			 <img alt="blog image" src="{% static 'imgs/blog/blog-6.webp' %}"/>
-			</a>
-		   </div>
-		   <div class="content">
-			<span class="tag">
-			 بازاریابی سئو
-			</span>
-			<h2 class="title">
-			 <a href="blog-details.html">
-			  نکات و ترفندهایی از یک سئو بالا
-						
-			 </a>
-			</h2>
-			<p class="text">
-			 لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است
-			</p>
-			<div class="meta">
-			 <span class="date">
-			  ۱۵ مهر ۱۴۰۴
-			 </span>
-			 <span class="author">
-			  توسط
-			  <span class="name">
-			   ایلیا میرزایی
-			  </span>
-			 </span>
-			</div>
-		   </div>
-		  </article>
+		  {% endfor %}
 		 </div>
 		</div>
 	   </div>
