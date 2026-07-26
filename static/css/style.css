@@ -14273,3 +14273,17 @@ section {
   font-size: 13px;
   margin-top: 8px;
 }
+
+/* contact form field labels */
+.contact-field-label {
+  display: block;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--black);
+  margin-bottom: 8px;
+}
+.contact-user-note {
+  margin-bottom: 20px;
+  font-size: 15px;
+  color: var(--black-2);
+}

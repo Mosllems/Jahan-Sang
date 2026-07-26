@@ -124,51 +124,55 @@
 			</div>
 		   </div>
 		   <div class="main-contact-wrap">
-			<form action="#">
-			 <div class="contact-formwrap">
-			  <div class="contact-formfield">
-			   <input id="Name" name="Name" placeholder="نام " type="text"/>
-			   <i class="fa-regular fa-user">
-			   </i>
-			  </div>
-			  <div class="contact-formfield">
-			   <input id="Email" name="L_name" placeholder="نام خانوادگی " type="text"/>
-			   <i class="fa-regular fa-envelope">
-			   </i>
-			  </div>
-			  <div class="contact-formfield">
-			   <input id="Phone" name="Phone" placeholder="تلفن " type="text"/>
-			   <i class="fa-regular fa-phone">
-			   </i>
-			  </div>
-			  <div class="contact-formfield">
-			   <input id="Email" name="Email" placeholder="ایمیل " type="text"/>
-			   <i class="fa-regular fa-envelope">
-			   </i>
-			  </div>
-			  <div class="contact-formfield span-2">
-			   <textarea id="message" name="message" placeholder="در مورد پروژه خود برای ما بگویید ..."></textarea>
-			   <i class="fa-regular fa-pen">
-			   </i>
-			  </div>
-			 </div>
-			 <div class="submit-btn">
-			  <button class="rr-btn" type="submit">
-			   <span class="btn-wrap">
-				<span class="text-one">
-				 ارسال 
-				 <i class="fa-solid fa-arrow-left">
-				 </i>
-				</span>
-				<span class="text-two">
-				 ارسال 
-				 <i class="fa-solid fa-arrow-left">
-				 </i>
-				</span>
-			   </span>
-			  </button>
-			 </div>
-			</form>
+			{% if messages %}
+				<div class="contact-messages" id="contact-messages">
+					{% for message in messages %}
+					<p class="comment-message {{ message.tags }}">{{ message }}</p>
+					{% endfor %}
+				</div>
+				<script>
+					setTimeout(function () {
+						var box = document.getElementById("contact-messages");
+						if (box) { box.style.opacity = "0"; setTimeout(function () { box.remove(); }, 500); }
+					}, 5000);
+				</script>
+				{% endif %}
+				{% if user.is_authenticated %}
+				<p class="contact-user-note">شما به عنوان <strong>{{ user.username }}</strong> وارد شده‌اید. کافی است پیام خود را بنویسید.</p>
+				{% endif %}
+				<form method="post">
+				{% csrf_token %}
+				 <div class="contact-formwrap">
+				  {% for field in form %}
+				  <div class="contact-formfield{% if field.name == 'message' %} span-2{% endif %}">
+				   {{ field }}
+				   {% if field.errors %}
+				   <div class="field-error">
+					{% for error in field.errors %}
+					<span>{{ error }}</span>
+					{% endfor %}
+				   </div>
+				   {% endif %}
+				  </div>
+				  {% endfor %}
+				 </div>
+				 <div class="submit-btn">
+				  <button class="rr-btn" type="submit">
+				   <span class="btn-wrap">
+					<span class="text-one">
+					 ارسال
+					 <i class="fa-solid fa-arrow-left">
+					 </i>
+					</span>
+					<span class="text-two">
+					 ارسال
+					 <i class="fa-solid fa-arrow-left">
+					 </i>
+					</span>
+				   </span>
+				  </button>
+				 </div>
+				</form>
 		   </div>
 		  </div>
 		  <div class="contact-map">

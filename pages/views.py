@@ -1,13 +1,19 @@
 import json
+from django.forms.models import BaseModelForm
+import requests
 import logging
 import uuid
-from datetime import datetime, timezone
 
-import requests
+from datetime import datetime, timezone
 from django.conf import settings
-from django.http import JsonResponse
+from django.http import HttpResponse, JsonResponse
 from django.views import generic
 from django.views.decorators.http import require_POST
+from django.urls import reverse_lazy
+from django.contrib import messages
+
+from .models import ContactForm
+from .forms import Contact
 
 logger = logging.getLogger(__name__)
 
@@ -24,8 +30,33 @@ class HomeView(generic.TemplateView):
 class AboutView(generic.TemplateView):
     template_name = "pages/about.html"
 
-class ContactView(generic.TemplateView):
-    template_name = "pages/contact.html"
+
+class ContactView(generic.CreateView):
+    model = ContactForm
+    form_class = Contact
+    template_name='pages/contact.html'
+    success_url = reverse_lazy('pages:contact')
+
+    def get_form_kwargs(self):
+
+        kwargs = super().get_form_kwargs() # first get the kwargs of the django
+        kwargs['user'] = self.request.user # add our user to the kwargs of the django 
+
+        return kwargs
+
+    def form_valid(self, form: BaseModelForm):
+
+        if self.request.user.is_authenticated:
+            form.instance.author = self.request.user
+            form.instance.first_name = self.request.user.first_name
+            form.instance.last_name = self.request.user.last_name
+            form.instance.phone_number = self.request.user.mobile_number
+            form.instance.email = self.request.user.email
+
+        messages.success(self.request, "پیام شما با موفقیت ارسال شد.")
+
+        return super().form_valid(form)
+
 
 
 @require_POST
