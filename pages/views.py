@@ -23,29 +23,18 @@ SESSION_ID_KEY = "chat_session_id"
 MAX_HISTORY_MESSAGES = 40
 MAX_MESSAGE_LENGTH = 2000
 
-class HomeView(generic.TemplateView):
-    template_name = "pages/home.html"
-
-
-class AboutView(generic.TemplateView):
-    template_name = "pages/about.html"
-
-
-class ContactView(generic.CreateView):
+class ContactFormMixin:
+    """Shared contact-form behavior used by both the home page and the
+    contact page. Each view only sets its own template_name and success_url."""
     model = ContactForm
     form_class = Contact
-    template_name='pages/contact.html'
-    success_url = reverse_lazy('pages:contact')
 
     def get_form_kwargs(self):
-
-        kwargs = super().get_form_kwargs() # first get the kwargs of the django
-        kwargs['user'] = self.request.user # add our user to the kwargs of the django 
-
+        kwargs = super().get_form_kwargs()      # first get the kwargs of the django
+        kwargs['user'] = self.request.user      # add our user to the kwargs of the django
         return kwargs
 
     def form_valid(self, form: BaseModelForm):
-
         if self.request.user.is_authenticated:
             form.instance.author = self.request.user
             form.instance.first_name = self.request.user.first_name
@@ -54,8 +43,21 @@ class ContactView(generic.CreateView):
             form.instance.email = self.request.user.email
 
         messages.success(self.request, "پیام شما با موفقیت ارسال شد.")
-
         return super().form_valid(form)
+
+
+class HomeView(ContactFormMixin, generic.CreateView):
+    template_name = "pages/home.html"
+    success_url = reverse_lazy('pages:home')
+
+
+class AboutView(generic.TemplateView):
+    template_name = "pages/about.html"
+
+
+class ContactView(ContactFormMixin, generic.CreateView):
+    template_name = 'pages/contact.html'
+    success_url = reverse_lazy('pages:contact')
 
 
 
