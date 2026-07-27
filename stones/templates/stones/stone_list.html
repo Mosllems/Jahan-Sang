@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} موجودی سنگ‌ها {% endblock title %}
+
+{% block extra_css %}
+<link href="{% static 'css/stones.css' %}" rel="stylesheet" />
+{% endblock extra_css %}
+
+{% block content %}
+<main>
+    <!-- breadcrumb area start -->
+    <section class="breadcrumb-area">
+        <div class="breadcrumb-area-inner">
+            <div class="breadcrumb-bg">
+                <img alt="image" src="{% static 'imgs/gallery/gallery-29.webp' %}" />
+            </div>
+            <div class="container rr-container-1410">
+                <div class="breadcrumb-content">
+                    <div class="title-wrapper">
+                        <h1 class="breadcrumb-title">موجودی سنگ‌ها</h1>
+                    </div>
+                    <div class="breadcrumb-wrapper">
+                        <ul class="rr-breadcrumb">
+                            <li><a href="{% url 'pages:home' %}">خانه</a></li>
+                            <li>موجودی سنگ‌ها</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- breadcrumb area end -->
+
+    <!-- stone list area start -->
+    <section class="stone-list-area">
+        <div class="container rr-container-1410">
+            <div class="stone-list-inner section-spacing">
+
+                <!-- toolbar: search + filters -->
+                <div class="stone-toolbar fade-anim">
+                    <form class="stone-search" method="get" action="{% url 'stones:stone_list' %}">
+                        <input type="text" name="q" value="{{ q }}" placeholder="جستجوی نام سنگ..." />
+                        {% if active_type %}<input type="hidden" name="type" value="{{ active_type }}" />{% endif %}
+                        {% if active_status %}<input type="hidden" name="status" value="{{ active_status }}" />{% endif %}
+                        <button type="submit" aria-label="جستجو"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </form>
+
+                    <div class="stone-filter-group">
+                        <span class="stone-filter-label">نوع سنگ:</span>
+                        <div class="stone-filter-bar">
+                            <a href="?{% if q %}q={{ q }}&{% endif %}{% if active_status %}status={{ active_status }}{% endif %}"
+                               class="{% if not active_type %}active{% endif %}">همه</a>
+                            {% for t in stone_types %}
+                            <a href="?{% if q %}q={{ q }}&{% endif %}type={{ t.slug }}{% if active_status %}&status={{ active_status }}{% endif %}"
+                               class="{% if active_type == t.slug %}active{% endif %}">{{ t.name }}</a>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <div class="stone-filter-group">
+                        <span class="stone-filter-label">وضعیت:</span>
+                        <div class="stone-filter-bar">
+                            <a href="?{% if q %}q={{ q }}&{% endif %}{% if active_type %}type={{ active_type }}{% endif %}"
+                               class="{% if not active_status %}active{% endif %}">همه</a>
+                            {% for st in statuses %}
+                            <a href="?{% if q %}q={{ q }}&{% endif %}{% if active_type %}type={{ active_type }}&{% endif %}status={{ st.slug }}"
+                               class="{% if active_status == st.slug %}active{% endif %}">{{ st.name }}</a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- stone cards grid -->
+                <div class="stone-grid">
+                    {% for stone in stones %}
+                    <div class="stone-card fade-anim">
+                        <div class="stone-card-thumb">
+                            <img alt="{{ stone.name }}" src="{% static stone.image %}" />
+                            <span class="stone-badge {{ stone.status_info.class }}">{{ stone.status_info.label }}</span>
+                        </div>
+                        <div class="stone-card-body">
+                            <span class="stone-type-tag">{{ stone.type_name }}</span>
+                            <h3 class="stone-name">{{ stone.name }}</h3>
+                            <ul class="stone-meta">
+                                <li><i class="fa-solid fa-location-dot"></i> منشأ: {{ stone.origin }}</li>
+                                <li><i class="fa-solid fa-ruler-combined"></i> ابعاد: {{ stone.dimensions }}</li>
+                                <li><i class="fa-solid fa-layer-group"></i> موجودی: {{ stone.slabs }} اسلب</li>
+                            </ul>
+                            <a class="stone-detail-btn" href="#">
+                                مشاهده جزئیات
+                                <i class="fa-solid fa-arrow-left"></i>
+                            </a>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <div class="blog-empty-state">
+                        <span class="blog-empty-state-icon"><i class="fa-regular fa-folder-open"></i></span>
+                        <p class="blog-empty-state-text">هیچ سنگی با این مشخصات یافت نشد.</p>
+                    </div>
+                    {% endfor %}
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- stone list area end -->
+</main>
+{% endblock content %}

@@ -27,6 +27,7 @@ urlpatterns = [
     path('', include('pages.urls')),
     path('blogs/', include('blogs.urls')),
     path('projects/', include('projects.urls')),
+    path('stones/', include('stones.urls')),
 ] + debug_toolbar_urls()
 
 if settings.DEBUG:

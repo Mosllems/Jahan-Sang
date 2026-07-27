@@ -56,8 +56,9 @@ INSTALLED_APPS = [
     'pages',
     'projects',
     'blogs',
+    'stones',
 
-    
+
 ]
 
 MIDDLEWARE = [
