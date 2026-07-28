@@ -1,6 +1,50 @@
-/* ===== Stone availability page ===== */
+/* ===== Inventory (stones + tools) page ===== */
 .stone-list-area {
   background-color: #F7F6FB;
+}
+
+/* ---- tabs (stones / tools) ---- */
+.inventory-tabs {
+  display: flex;
+  gap: 8px;
+  background-color: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 8px;
+  margin-bottom: 24px;
+  max-width: 420px;
+}
+.inventory-tabs a {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 20px;
+  border-radius: 100px;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--black-2);
+  transition: all 0.3s;
+}
+.inventory-tabs a:hover {
+  color: var(--theme);
+}
+.inventory-tabs a.active {
+  background-color: var(--theme);
+  color: var(--white);
+}
+
+/* ---- no-image placeholder ---- */
+.stone-card-noimg {
+  width: 100%;
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #EFEEF5;
+  color: #C3C0D2;
+  font-size: 46px;
 }
 
 /* ---- toolbar ---- */

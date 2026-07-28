@@ -126,7 +126,6 @@
                             </h3>
                             <div class="sidebar-search-box">
                                 <form action="{% url 'blogs:blog' %}" class="sidebar-search-form" method="get">
-                                {% csrf_token %}
                                     <div class="input-field">
                                         <input placeholder="جستجو ..." type="text" name="q" value="{{ request.GET.q }}" />
                                         <button class="search-btn" type="submit">

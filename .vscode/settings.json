@@ -8,6 +8,12 @@
     "python.analysis.autoImportCompletions": true,
     "python.analysis.indexing": true,
     "python.analysis.diagnosticMode": "openFilesOnly",
-    "python.languageServer": "Pylance",
-    "python.terminal.activateEnvironment": true
+    "python.languageServer": "Default",
+    "python.terminal.activateEnvironment": true,
+    "cursorpyright.analysis.autoImportCompletions": true,
+    "cursorpyright.analysis.diagnosticMode": "openFilesOnly",
+    "cursorpyright.analysis.extraPaths": [
+        "${workspaceFolder}"
+    ],
+    "cursorpyright.analysis.typeCheckingMode": "basic"
 }

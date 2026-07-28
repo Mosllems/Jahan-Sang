@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} موجودی انبار {% endblock title %}
+
+{% block extra_css %}
+<link href="{% static 'css/inventory.css' %}" rel="stylesheet" />
+{% endblock extra_css %}
+
+{% block content %}
+<main>
+    <!-- breadcrumb area start -->
+    <section class="breadcrumb-area">
+        <div class="breadcrumb-area-inner">
+            <div class="breadcrumb-bg">
+                <img alt="image" src="{% static 'imgs/gallery/gallery-29.webp' %}" />
+            </div>
+            <div class="container rr-container-1410">
+                <div class="breadcrumb-content">
+                    <div class="title-wrapper">
+                        <h1 class="breadcrumb-title">موجودی انبار</h1>
+                    </div>
+                    <div class="breadcrumb-wrapper">
+                        <ul class="rr-breadcrumb">
+                            <li><a href="{% url 'pages:home' %}">خانه</a></li>
+                            <li>موجودی انبار</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- breadcrumb area end -->
+
+    <!-- inventory area start -->
+    <section class="stone-list-area">
+        <div class="container rr-container-1410">
+            <div class="stone-list-inner section-spacing">
+
+                <!-- tabs: stones / tools -->
+                <div class="inventory-tabs fade-anim">
+                    <a href="?tab=stones" class="{% if active_tab == 'stones' %}active{% endif %}">
+                        <i class="fa-solid fa-cube"></i> سنگ‌ها
+                    </a>
+                    <a href="?tab=tools" class="{% if active_tab == 'tools' %}active{% endif %}">
+                        <i class="fa-solid fa-screwdriver-wrench"></i> ابزارها
+                    </a>
+                </div>
+
+                <!-- toolbar: search + filters -->
+                <div class="stone-toolbar fade-anim">
+                    <form class="stone-search" method="get" action="{% url 'inventory:inventory_list' %}">
+                        <input type="hidden" name="tab" value="{{ active_tab }}" />
+                        <input type="text" name="q" value="{{ q }}" placeholder="جستجوی نام..." />
+                        {% if active_category %}<input type="hidden" name="category" value="{{ active_category }}" />{% endif %}
+                        {% if active_status %}<input type="hidden" name="status" value="{{ active_status }}" />{% endif %}
+                        <button type="submit" aria-label="جستجو"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </form>
+
+                    <div class="stone-filter-group">
+                        <span class="stone-filter-label">دسته‌بندی:</span>
+                        <div class="stone-filter-bar">
+                            <a href="?tab={{ active_tab }}{% if q %}&q={{ q }}{% endif %}{% if active_status %}&status={{ active_status }}{% endif %}"
+                               class="{% if not active_category %}active{% endif %}">همه</a>
+                            {% for cat in categories %}
+                            <a href="?tab={{ active_tab }}{% if q %}&q={{ q }}{% endif %}&category={{ cat.slug }}{% if active_status %}&status={{ active_status }}{% endif %}"
+                               class="{% if active_category == cat.slug %}active{% endif %}">{{ cat.name }}</a>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <div class="stone-filter-group">
+                        <span class="stone-filter-label">وضعیت:</span>
+                        <div class="stone-filter-bar">
+                            <a href="?tab={{ active_tab }}{% if q %}&q={{ q }}{% endif %}{% if active_category %}&category={{ active_category }}{% endif %}"
+                               class="{% if not active_status %}active{% endif %}">همه</a>
+                            {% for st in statuses %}
+                            <a href="?tab={{ active_tab }}{% if q %}&q={{ q }}{% endif %}{% if active_category %}&category={{ active_category }}{% endif %}&status={{ st.slug }}"
+                               class="{% if active_status == st.slug %}active{% endif %}">{{ st.name }}</a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- item cards grid -->
+                <div class="stone-grid">
+                    {% for item in items %}
+                    <div class="stone-card fade-anim">
+                        <div class="stone-card-thumb">
+                            {% if item.image %}
+                            <img alt="{{ item.name }}" src="{{ item.image.url }}" />
+                            {% else %}
+                            <div class="stone-card-noimg">
+                                <i class="fa-solid {% if active_tab == 'tools' %}fa-screwdriver-wrench{% else %}fa-cube{% endif %}"></i>
+                            </div>
+                            {% endif %}
+                            <span class="stone-badge {{ item.stock_status }}">{{ item.stock_status_display }}</span>
+                        </div>
+                        <div class="stone-card-body">
+                            <span class="stone-type-tag">{{ item.category.name }}</span>
+                            <h3 class="stone-name">{{ item.name }}</h3>
+                            <ul class="stone-meta">
+                                {% if active_tab == 'tools' %}
+                                {% if item.brand %}<li><i class="fa-solid fa-tag"></i> برند: {{ item.brand }}</li>{% endif %}
+                                <li><i class="fa-solid fa-wrench"></i> سلامت: {{ item.get_condition_display }}</li>
+                                <li><i class="fa-solid fa-layer-group"></i> موجودی: {{ item.quantity }} عدد</li>
+                                {% else %}
+                                {% if item.origin %}<li><i class="fa-solid fa-location-dot"></i> منشأ: {{ item.origin }}</li>{% endif %}
+                                {% if item.dimensions %}<li><i class="fa-solid fa-ruler-combined"></i> ابعاد: {{ item.dimensions }}</li>{% endif %}
+                                <li><i class="fa-solid fa-layer-group"></i> موجودی: {{ item.quantity }} اسلب</li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <div class="blog-empty-state">
+                        <span class="blog-empty-state-icon"><i class="fa-regular fa-folder-open"></i></span>
+                        <p class="blog-empty-state-text">موردی با این مشخصات یافت نشد.</p>
+                    </div>
+                    {% endfor %}
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- inventory area end -->
+</main>
+{% endblock content %}
