@@ -85,20 +85,27 @@
                 <!-- item cards grid -->
                 <div class="stone-grid">
                     {% for item in items %}
+                    {% if active_tab == 'tools' %}
+                    {% url 'inventory:tool_detail' item.slug as item_url %}
+                    {% else %}
+                    {% url 'inventory:stone_detail' item.slug as item_url %}
+                    {% endif %}
                     <div class="stone-card fade-anim">
                         <div class="stone-card-thumb">
-                            {% if item.image %}
-                            <img alt="{{ item.name }}" src="{{ item.image.url }}" />
-                            {% else %}
-                            <div class="stone-card-noimg">
-                                <i class="fa-solid {% if active_tab == 'tools' %}fa-screwdriver-wrench{% else %}fa-cube{% endif %}"></i>
-                            </div>
-                            {% endif %}
+                            <a href="{{ item_url }}">
+                                {% if item.image %}
+                                <img alt="{{ item.name }}" src="{{ item.image.url }}" />
+                                {% else %}
+                                <div class="stone-card-noimg">
+                                    <i class="fa-solid {% if active_tab == 'tools' %}fa-screwdriver-wrench{% else %}fa-cube{% endif %}"></i>
+                                </div>
+                                {% endif %}
+                            </a>
                             <span class="stone-badge {{ item.stock_status }}">{{ item.stock_status_display }}</span>
                         </div>
                         <div class="stone-card-body">
                             <span class="stone-type-tag">{{ item.category.name }}</span>
-                            <h3 class="stone-name">{{ item.name }}</h3>
+                            <h3 class="stone-name"><a href="{{ item_url }}">{{ item.name }}</a></h3>
                             <ul class="stone-meta">
                                 {% if active_tab == 'tools' %}
                                 {% if item.brand %}<li><i class="fa-solid fa-tag"></i> برند: {{ item.brand }}</li>{% endif %}

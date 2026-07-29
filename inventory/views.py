@@ -55,3 +55,23 @@ class InventoryListView(UserPassesTestMixin, generic.TemplateView):
         context["active_category"] = category_filter
         context["active_status"] = status_filter
         return context
+
+
+class StaffOnlyMixin(UserPassesTestMixin):
+    """Inventory is internal data — staff/admin only."""
+
+    def test_func(self):
+        return self.request.user.is_staff
+
+
+class StoneDetailView(StaffOnlyMixin, generic.DetailView):
+    model = Stone
+    template_name = "inventory/stone_detail.html"
+    context_object_name = "stone"
+
+
+class ToolDetailView(StaffOnlyMixin, generic.DetailView):
+    model = Tool
+    template_name = "inventory/tool_detail.html"
+    context_object_name = "tool"
+

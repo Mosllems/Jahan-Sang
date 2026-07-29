@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} {{ stone.name }} {% endblock title %}
+
+{% block extra_css %}
+<link href="{% static 'css/inventory.css' %}" rel="stylesheet" />
+{% endblock extra_css %}
+
+{% block content %}
+<main>
+    <!-- breadcrumb area start -->
+    <section class="breadcrumb-area">
+        <div class="breadcrumb-area-inner">
+            <div class="breadcrumb-bg">
+                <img alt="image" src="{% static 'imgs/gallery/gallery-29.webp' %}" />
+            </div>
+            <div class="container rr-container-1410">
+                <div class="breadcrumb-content">
+                    <div class="title-wrapper">
+                        <h1 class="breadcrumb-title">{{ stone.name }}</h1>
+                    </div>
+                    <div class="breadcrumb-wrapper">
+                        <ul class="rr-breadcrumb">
+                            <li><a href="{% url 'pages:home' %}">خانه</a></li>
+                            <li><a href="{% url 'inventory:inventory_list' %}">موجودی انبار</a></li>
+                            <li>{{ stone.name }}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- breadcrumb area end -->
+
+    <!-- inventory detail area start -->
+    <section class="inventory-detail-area">
+        <div class="container rr-container-1410">
+            <div class="inventory-detail-inner section-spacing">
+
+                <a class="inventory-back-link" href="{% url 'inventory:inventory_list' %}?tab=stones">
+                    <i class="fa-solid fa-arrow-right"></i>
+                    بازگشت به موجودی انبار
+                </a>
+
+                <div class="inventory-detail-wrap fade-anim">
+                    <div class="inventory-detail-thumb">
+                        {% if stone.image %}
+                        <img alt="{{ stone.name }}" src="{{ stone.image.url }}" />
+                        {% else %}
+                        <div class="stone-card-noimg">
+                            <i class="fa-solid fa-cube"></i>
+                        </div>
+                        {% endif %}
+                        <span class="stone-badge {{ stone.stock_status }}">{{ stone.stock_status_display }}</span>
+                    </div>
+
+                    <div class="inventory-detail-content">
+                        <span class="stone-type-tag">{{ stone.category.name }}</span>
+                        <h2 class="inventory-detail-title">{{ stone.name }}</h2>
+
+                        <div class="inventory-detail-meta">
+                            <div class="inventory-meta-box">
+                                <div class="icon"><i class="fa-solid fa-layer-group"></i></div>
+                                <div class="content">
+                                    <p class="label">موجودی</p>
+                                    <p class="value">{{ stone.quantity }} اسلب</p>
+                                </div>
+                            </div>
+
+                            {% if stone.origin %}
+                            <div class="inventory-meta-box">
+                                <div class="icon"><i class="fa-solid fa-location-dot"></i></div>
+                                <div class="content">
+                                    <p class="label">منشأ</p>
+                                    <p class="value">{{ stone.origin }}</p>
+                                </div>
+                            </div>
+                            {% endif %}
+
+                            {% if stone.dimensions %}
+                            <div class="inventory-meta-box">
+                                <div class="icon"><i class="fa-solid fa-ruler-combined"></i></div>
+                                <div class="content">
+                                    <p class="label">ابعاد</p>
+                                    <p class="value">{{ stone.dimensions }}</p>
+                                </div>
+                            </div>
+                            {% endif %}
+
+                            {% if stone.thickness %}
+                            <div class="inventory-meta-box">
+                                <div class="icon"><i class="fa-solid fa-ruler-vertical"></i></div>
+                                <div class="content">
+                                    <p class="label">ضخامت</p>
+                                    <p class="value">{{ stone.thickness }}</p>
+                                </div>
+                            </div>
+                            {% endif %}
+
+                            <div class="inventory-meta-box">
+                                <div class="icon"><i class="fa-solid fa-calendar-days"></i></div>
+                                <div class="content">
+                                    <p class="label">آخرین بروزرسانی</p>
+                                    <p class="value">{{ stone.datetime_modified|date:"Y/m/d" }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- inventory detail area end -->
+</main>
+{% endblock content %}
