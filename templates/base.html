@@ -243,6 +243,13 @@
 												تماس با ما
 											</a>
 										</li>
+										{% if user.is_staff %}
+										<li class="menu-item">
+											<a href="{% url 'inventory:inventory_list' %}">
+												انبار
+											</a>
+										</li>
+										{% endif %}
 									</ul>
 								</nav>
 							</div>

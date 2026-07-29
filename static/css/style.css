@@ -14252,6 +14252,13 @@ section {
   background-color: var(--white);
   color: var(--theme);
 }
+.header-inventory-btn {
+  background-color: var(--black);
+}
+.header-inventory-btn:hover {
+  background-color: var(--white);
+  color: var(--black);
+}
 
 /* blog comment extras */
 .comment-messages {

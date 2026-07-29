@@ -8,7 +8,7 @@
     "python.analysis.autoImportCompletions": true,
     "python.analysis.indexing": true,
     "python.analysis.diagnosticMode": "openFilesOnly",
-    "python.languageServer": "Default",
+    "python.languageServer": "None",
     "python.terminal.activateEnvironment": true,
     "cursorpyright.analysis.autoImportCompletions": true,
     "cursorpyright.analysis.diagnosticMode": "openFilesOnly",
