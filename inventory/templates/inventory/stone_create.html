@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} افزودن سنگ {% endblock title %}
+
+{% block extra_css %}
+<link href="{% static 'css/inventory.css' %}" rel="stylesheet" />
+{% endblock extra_css %}
+
+{% block content %}
+<main>
+    <!-- breadcrumb area start -->
+    <section class="breadcrumb-area">
+        <div class="breadcrumb-area-inner">
+            <div class="breadcrumb-bg">
+                <img alt="image" src="{% static 'imgs/gallery/gallery-29.webp' %}" />
+            </div>
+            <div class="container rr-container-1410">
+                <div class="breadcrumb-content">
+                    <div class="title-wrapper">
+                        <h1 class="breadcrumb-title">افزودن سنگ</h1>
+                    </div>
+                    <div class="breadcrumb-wrapper">
+                        <ul class="rr-breadcrumb">
+                            <li><a href="{% url 'pages:home' %}">خانه</a></li>
+                            <li><a href="{% url 'inventory:inventory_list' %}">موجودی انبار</a></li>
+                            <li>افزودن سنگ</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- breadcrumb area end -->
+
+    <!-- create form area start -->
+    <section class="inventory-form-area">
+        <div class="container rr-container-1410">
+            <div class="inventory-form-inner section-spacing">
+
+                <a class="inventory-back-link" href="{% url 'inventory:inventory_list' %}?tab=stones">
+                    <i class="fa-solid fa-arrow-right"></i>
+                    بازگشت به موجودی انبار
+                </a>
+
+                <div class="inventory-form-card fade-anim">
+                    <h2 class="inventory-form-title">
+                        <i class="fa-solid fa-cube"></i>
+                        اطلاعات سنگ جدید
+                    </h2>
+
+                    <form method="post" enctype="multipart/form-data" novalidate>
+                        {% csrf_token %}
+
+                        {% if form.non_field_errors %}
+                        <div class="auth-errors">
+                            {% for error in form.non_field_errors %}
+                            <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+
+                        <div class="inventory-form-grid">
+                            {% for field in form %}
+                            <div class="inventory-form-field{% if field.name == 'image' %} span-2{% endif %}">
+                                <label for="{{ field.id_for_label }}">
+                                    {{ field.label }}
+                                    {% if field.field.required %}<span class="req">*</span>{% endif %}
+                                </label>
+                                {{ field }}
+                                {% if field.help_text %}
+                                <small class="field-help">{{ field.help_text|safe }}</small>
+                                {% endif %}
+                                {% if field.errors %}
+                                <div class="field-error">
+                                    {% for error in field.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                                {% endif %}
+                            </div>
+                            {% endfor %}
+                        </div>
+
+                        <div class="inventory-form-actions">
+                            <button class="rr-btn" type="submit">
+                                <span class="btn-wrap">
+                                    <span class="text-one">ذخیره سنگ</span>
+                                    <span class="text-two">ذخیره سنگ</span>
+                                </span>
+                            </button>
+                            <a class="inventory-cancel-btn" href="{% url 'inventory:inventory_list' %}?tab=stones">
+                                انصراف
+                            </a>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- create form area end -->
+</main>
+{% endblock content %}

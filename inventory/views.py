@@ -1,7 +1,9 @@
 from django.contrib.auth.mixins import UserPassesTestMixin
 from django.views import generic
+from django.urls import reverse_lazy
 
 from .models import Stone, StoneCategory, Tool, ToolCategory
+from .forms import StoneForm, ToolForm
 
 STATUSES = [
     {"slug": "available", "name": "موجود"},
@@ -75,3 +77,16 @@ class ToolDetailView(StaffOnlyMixin, generic.DetailView):
     template_name = "inventory/tool_detail.html"
     context_object_name = "tool"
 
+
+class StoneCreateView(StaffOnlyMixin, generic.CreateView):
+    model = Stone
+    form_class = StoneForm
+    template_name = "inventory/stone_create.html"
+    success_url = reverse_lazy("inventory:inventory_list")
+
+
+class ToolCreateView(StaffOnlyMixin, generic.CreateView):
+    model = Tool
+    form_class = ToolForm
+    template_name = "inventory/tool_create.html"
+    success_url = reverse_lazy("inventory:inventory_list")

@@ -47,6 +47,18 @@
                     </a>
                 </div>
 
+                <!-- add buttons (staff actions) -->
+                <div class="inventory-actions fade-anim">
+                    <a class="inventory-add-btn" href="{% url 'inventory:stone_create' %}">
+                        <i class="fa-solid fa-plus"></i>
+                        افزودن سنگ
+                    </a>
+                    <a class="inventory-add-btn tool" href="{% url 'inventory:tool_create' %}">
+                        <i class="fa-solid fa-plus"></i>
+                        افزودن ابزار
+                    </a>
+                </div>
+
                 <!-- toolbar: search + filters -->
                 <div class="stone-toolbar fade-anim">
                     <form class="stone-search" method="get" action="{% url 'inventory:inventory_list' %}">

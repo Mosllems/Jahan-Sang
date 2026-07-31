@@ -40,6 +40,7 @@ class CustomLoginForm(LoginForm):
         if "remember" in self.fields:
             self.fields["remember"].label = "مرا به خاطر بسپار"
 
+
 class CustomUserCreationForm(UserCreationForm):
     class Meta():
         model = CustomUser

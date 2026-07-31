@@ -348,3 +348,154 @@
   color: var(--black);
   margin: 0;
 }
+
+/* ---------- add buttons ---------- */
+.inventory-actions {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.inventory-add-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: 100px;
+  background-color: var(--theme);
+  color: var(--white);
+  font-size: 15px;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+.inventory-add-btn:hover {
+  background-color: var(--black);
+  color: var(--white);
+}
+.inventory-add-btn.tool {
+  background-color: var(--black);
+}
+.inventory-add-btn.tool:hover {
+  background-color: var(--theme);
+}
+@media only screen and (max-width: 575px) {
+  .inventory-actions {
+    flex-direction: column;
+  }
+  .inventory-add-btn {
+    justify-content: center;
+  }
+}
+
+/* ---------- inventory create form ---------- */
+.inventory-form-card {
+  max-width: 900px;
+  background-color: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 40px;
+}
+@media only screen and (max-width: 575px) {
+  .inventory-form-card {
+    padding: 26px 20px;
+  }
+}
+.inventory-form-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--black);
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+}
+.inventory-form-title i {
+  color: var(--theme);
+}
+
+.inventory-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+}
+@media only screen and (max-width: 767px) {
+  .inventory-form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.inventory-form-field.span-2 {
+  grid-column: span 2;
+}
+@media only screen and (max-width: 767px) {
+  .inventory-form-field.span-2 {
+    grid-column: span 1;
+  }
+}
+
+.inventory-form-field label {
+  display: block;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--black);
+  margin-bottom: 8px;
+}
+.inventory-form-field label .req {
+  color: #e03e3e;
+  margin-inline-start: 3px;
+}
+.inventory-form-field input[type="text"],
+.inventory-form-field input[type="number"],
+.inventory-form-field input[type="file"],
+.inventory-form-field select,
+.inventory-form-field textarea {
+  width: 100%;
+  min-height: 52px;
+  padding: 12px 16px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-size: 15px;
+  color: var(--black);
+  background-color: var(--white);
+  outline: none;
+  transition: border-color 0.3s;
+}
+.inventory-form-field textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+.inventory-form-field input:focus,
+.inventory-form-field select:focus,
+.inventory-form-field textarea:focus {
+  border-color: var(--theme);
+}
+.inventory-form-field .field-help {
+  display: block;
+  font-size: 12px;
+  color: var(--black-2);
+  margin-top: 6px;
+}
+.inventory-form-field .field-error span {
+  display: block;
+  color: #e03e3e;
+  font-size: 13px;
+  margin-top: 6px;
+}
+
+.inventory-form-actions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-top: 32px;
+  padding-top: 26px;
+  border-top: 1px solid var(--border);
+}
+.inventory-cancel-btn {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--black-2);
+  transition: color 0.3s;
+}
+.inventory-cancel-btn:hover {
+  color: #e03e3e;
+}
