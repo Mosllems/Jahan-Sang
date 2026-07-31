@@ -27,5 +27,5 @@ class ToolForm(forms.ModelForm):
             'category': forms.Select(attrs={'placeholder': 'دسته بندی'}),
             'image': forms.FileInput(attrs={'placeholder': 'تصویر'}),
             'quantity': forms.NumberInput(attrs={'placeholder': 'مقدار'}),
-            'brand': forms.Select(attrs={'placeholder': 'برند'}),
+            'brand': forms.TextInput(attrs={'placeholder': 'برند'}),
             'condition': forms.Select(attrs={'placeholder': 'وضعیت'}),}

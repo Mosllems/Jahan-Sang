@@ -51,7 +51,7 @@ class InventoryItem(models.Model):
 # ---------- stones ----------
 class StoneCategory(models.Model):
     name = models.CharField(max_length=100, unique=True, verbose_name="نام دسته‌بندی")
-    slug = models.SlugField(max_length=120, unique=True, allow_unicode=True)
+    slug = models.SlugField(max_length=120, unique=True, allow_unicode=True) #allow_unicode=True is for persian characters
 
     class Meta:
         verbose_name = "دسته‌بندی سنگ"
@@ -62,7 +62,7 @@ class StoneCategory(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = slugify(self.name, allow_unicode=True)
+            self.slug = slugify(self.name, allow_unicode=True) #allow_unicode=True is for persian characters
         super().save(*args, **kwargs)
 
 
@@ -75,6 +75,7 @@ class Stone(InventoryItem):
     class Meta(InventoryItem.Meta):
         verbose_name = "سنگ"
         verbose_name_plural = "سنگ‌ها"
+        ordering = ["-datetime_created"]
         
 
 
@@ -110,3 +111,4 @@ class Tool(InventoryItem):
     class Meta(InventoryItem.Meta):
         verbose_name = "ابزار"
         verbose_name_plural = "ابزارها"
+        ordering = ["-datetime_created"]
