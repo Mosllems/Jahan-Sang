@@ -3,8 +3,41 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth import get_user_model
 
+from .models import Profile
+
 
 CustomUser = get_user_model()
+
+
+class UserInfoForm(forms.ModelForm):
+    """The account fields that live on CustomUser."""
+
+    class Meta:
+        model = CustomUser
+        fields = ['first_name', 'last_name', 'email', 'mobile_number']
+        labels = {
+            'first_name': 'نام',
+            'last_name': 'نام خانوادگی',
+            'email': 'ایمیل',
+            'mobile_number': 'شماره موبایل',
+        }
+        widgets = {
+            'first_name': forms.TextInput(attrs={'placeholder': 'نام'}),
+            'last_name': forms.TextInput(attrs={'placeholder': 'نام خانوادگی'}),
+            'email': forms.EmailInput(attrs={'placeholder': 'ایمیل'}),
+            'mobile_number': forms.TextInput(attrs={'placeholder': 'شماره موبایل'}),
+        }
+
+
+class ProfileForm(forms.ModelForm):
+    """The extra fields that live on Profile."""
+
+    class Meta:
+        model = Profile
+        fields = ['avatar', 'bio']
+        widgets = {
+            'bio': forms.Textarea(attrs={'placeholder': 'چند خطی درباره خودتان بنویسید...', 'rows': 4}),
+        }
 
 
 class CustomSignupForm(SignupForm):

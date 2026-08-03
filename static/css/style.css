@@ -14226,14 +14226,22 @@ section {
   gap: 18px;
 }
 .header-user {
-  font-weight: 700;
-  font-size: 16px;
-  color: var(--black);
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  padding: 12px 26px;
+  border-radius: 100px;
+  background-color: var(--theme);
+  color: var(--white);
+  font-weight: 600;
+  font-size: 15px;
+  transition: all 0.3s;
 }
 .header-user i {
+  color: inherit;
+}
+.header-user:hover {
+  background-color: var(--white);
   color: var(--theme);
 }
 .header-auth-btn {

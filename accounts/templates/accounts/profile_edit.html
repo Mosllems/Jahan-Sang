@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} ویرایش پروفایل {% endblock title %}
+
+{% block extra_css %}
+<link href="{% static 'css/profile.css' %}" rel="stylesheet" />
+{% endblock extra_css %}
+
+{% block content %}
+<main>
+    <!-- breadcrumb area start -->
+    <section class="breadcrumb-area">
+        <div class="breadcrumb-area-inner">
+            <div class="breadcrumb-bg">
+                <img alt="image" src="{% static 'imgs/gallery/gallery-29.webp' %}" />
+            </div>
+            <div class="container rr-container-1410">
+                <div class="breadcrumb-content">
+                    <div class="title-wrapper">
+                        <h1 class="breadcrumb-title">ویرایش پروفایل</h1>
+                    </div>
+                    <div class="breadcrumb-wrapper">
+                        <ul class="rr-breadcrumb">
+                            <li><a href="{% url 'pages:home' %}">خانه</a></li>
+                            <li><a href="{% url 'accounts:profile' %}">پروفایل من</a></li>
+                            <li>ویرایش</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- breadcrumb area end -->
+
+    <!-- profile edit area start -->
+    <section class="profile-area">
+        <div class="container rr-container-1410">
+            <div class="profile-inner section-spacing">
+
+                <a class="inventory-back-link" href="{% url 'accounts:profile' %}">
+                    <i class="fa-solid fa-arrow-right"></i>
+                    بازگشت به پروفایل
+                </a>
+
+                <div class="profile-card profile-form-card fade-anim">
+                    <div class="profile-card-head">
+                        <h2 class="profile-card-title">
+                            <i class="fa-regular fa-pen-to-square"></i>
+                            ویرایش اطلاعات
+                        </h2>
+                    </div>
+
+                    <form method="post" enctype="multipart/form-data" novalidate>
+                        {% csrf_token %}
+
+                        {% if user_form.non_field_errors or profile_form.non_field_errors %}
+                        <div class="auth-errors">
+                            {% for error in user_form.non_field_errors %}<p>{{ error }}</p>{% endfor %}
+                            {% for error in profile_form.non_field_errors %}<p>{{ error }}</p>{% endfor %}
+                        </div>
+                        {% endif %}
+
+                        <div class="profile-form-grid">
+                            {% for field in user_form %}
+                            <div class="profile-form-field">
+                                <label for="{{ field.id_for_label }}">
+                                    {{ field.label }}
+                                    {% if field.field.required %}<span class="req">*</span>{% endif %}
+                                </label>
+                                {{ field }}
+                                {% if field.errors %}
+                                <div class="field-error">
+                                    {% for error in field.errors %}<span>{{ error }}</span>{% endfor %}
+                                </div>
+                                {% endif %}
+                            </div>
+                            {% endfor %}
+
+                            {% for field in profile_form %}
+                            <div class="profile-form-field span-2">
+                                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                                {{ field }}
+                                {% if field.errors %}
+                                <div class="field-error">
+                                    {% for error in field.errors %}<span>{{ error }}</span>{% endfor %}
+                                </div>
+                                {% endif %}
+                            </div>
+                            {% endfor %}
+                        </div>
+
+                        <div class="inventory-form-actions">
+                            <button class="rr-btn" type="submit">
+                                <span class="btn-wrap">
+                                    <span class="text-one">ذخیره تغییرات</span>
+                                    <span class="text-two">ذخیره تغییرات</span>
+                                </span>
+                            </button>
+                            <a class="inventory-cancel-btn" href="{% url 'accounts:profile' %}">انصراف</a>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- profile edit area end -->
+</main>
+{% endblock content %}
