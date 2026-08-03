@@ -1,0 +1,178 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} پروفایل من {% endblock title %}
+
+{% block extra_css %}
+<link href="{% static 'css/profile.css' %}" rel="stylesheet" />
+{% endblock extra_css %}
+
+{% block content %}
+<main>
+    <!-- breadcrumb area start -->
+    <section class="breadcrumb-area">
+        <div class="breadcrumb-area-inner">
+            <div class="breadcrumb-bg">
+                <img alt="image" src="{% static 'imgs/gallery/gallery-29.webp' %}" />
+            </div>
+            <div class="container rr-container-1410">
+                <div class="breadcrumb-content">
+                    <div class="title-wrapper">
+                        <h1 class="breadcrumb-title">پروفایل من</h1>
+                    </div>
+                    <div class="breadcrumb-wrapper">
+                        <ul class="rr-breadcrumb">
+                            <li><a href="{% url 'pages:home' %}">خانه</a></li>
+                            <li>پروفایل من</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- breadcrumb area end -->
+
+    <!-- profile area start -->
+    <section class="profile-area">
+        <div class="container rr-container-1410">
+            <div class="profile-inner section-spacing">
+
+                {% if messages %}
+                <div class="profile-messages" id="profile-messages">
+                    {% for message in messages %}
+                    <p class="comment-message {{ message.tags }}">{{ message }}</p>
+                    {% endfor %}
+                </div>
+                <script>
+                    setTimeout(function () {
+                        var box = document.getElementById("profile-messages");
+                        if (box) { box.style.opacity = "0"; setTimeout(function () { box.remove(); }, 500); }
+                    }, 5000);
+                </script>
+                {% endif %}
+
+                <div class="profile-layout">
+
+                    <!-- sidebar -->
+                    <aside class="profile-sidebar fade-anim">
+                        <div class="profile-avatar-box">
+                            {% if profile.avatar %}
+                            <img class="profile-avatar" alt="{{ user.username }}" src="{{ profile.avatar.url }}" />
+                            {% else %}
+                            <div class="profile-avatar profile-avatar-empty">
+                                <i class="fa-regular fa-user"></i>
+                            </div>
+                            {% endif %}
+                            <h3 class="profile-username">{{ user.username }}</h3>
+                            {% if user.is_staff %}
+                            <span class="profile-role staff">ادمین</span>
+                            {% else %}
+                            <span class="profile-role">کاربر</span>
+                            {% endif %}
+                        </div>
+
+                        <nav class="profile-nav">
+                            <a class="active" href="{% url 'accounts:profile' %}">
+                                <i class="fa-regular fa-id-card"></i>
+                                اطلاعات من
+                            </a>
+                            <a href="{% url 'accounts:profile_edit' %}">
+                                <i class="fa-regular fa-pen-to-square"></i>
+                                ویرایش پروفایل
+                            </a>
+                            <a href="{% url 'account_logout' %}">
+                                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                                خروج
+                            </a>
+                        </nav>
+                    </aside>
+
+                    <!-- content -->
+                    <div class="profile-content">
+
+                        <!-- stats -->
+                        <div class="profile-stats fade-anim">
+                            <div class="profile-stat-box">
+                                <div class="icon"><i class="fa-regular fa-comments"></i></div>
+                                <div class="content">
+                                    <p class="value">{{ comment_count }}</p>
+                                    <p class="label">نظرات ثبت‌شده</p>
+                                </div>
+                            </div>
+                            <div class="profile-stat-box">
+                                <div class="icon"><i class="fa-regular fa-envelope"></i></div>
+                                <div class="content">
+                                    <p class="value">{{ message_count }}</p>
+                                    <p class="label">پیام‌های ارسالی</p>
+                                </div>
+                            </div>
+                            <div class="profile-stat-box">
+                                <div class="icon"><i class="fa-regular fa-calendar-days"></i></div>
+                                <div class="content">
+                                    <p class="value">{{ user.date_joined|date:"Y/m/d" }}</p>
+                                    <p class="label">تاریخ عضویت</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- account info -->
+                        <div class="profile-card fade-anim">
+                            <div class="profile-card-head">
+                                <h2 class="profile-card-title">
+                                    <i class="fa-regular fa-id-card"></i>
+                                    اطلاعات حساب کاربری
+                                </h2>
+                                <a class="profile-edit-link" href="{% url 'accounts:profile_edit' %}">
+                                    <i class="fa-regular fa-pen-to-square"></i>
+                                    ویرایش
+                                </a>
+                            </div>
+
+                            <ul class="profile-info-list">
+                                <li>
+                                    <span class="label">نام کاربری</span>
+                                    <span class="value">{{ user.username }}</span>
+                                </li>
+                                <li>
+                                    <span class="label">نام</span>
+                                    <span class="value">{{ user.first_name|default:"—" }}</span>
+                                </li>
+                                <li>
+                                    <span class="label">نام خانوادگی</span>
+                                    <span class="value">{{ user.last_name|default:"—" }}</span>
+                                </li>
+                                <li>
+                                    <span class="label">ایمیل</span>
+                                    <span class="value">{{ user.email|default:"—" }}</span>
+                                </li>
+                                <li>
+                                    <span class="label">شماره موبایل</span>
+                                    <span class="value">{{ user.mobile_number|default:"—" }}</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- bio -->
+                        <div class="profile-card fade-anim">
+                            <div class="profile-card-head">
+                                <h2 class="profile-card-title">
+                                    <i class="fa-regular fa-address-card"></i>
+                                    درباره من
+                                </h2>
+                            </div>
+                            {% if profile.bio %}
+                            <p class="profile-bio">{{ profile.bio|linebreaksbr }}</p>
+                            {% else %}
+                            <p class="profile-bio empty">هنوز چیزی درباره خودتان ننوشته‌اید.</p>
+                            {% endif %}
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- profile area end -->
+</main>
+{% endblock content %}

@@ -256,10 +256,10 @@
 							<div class="header-2-cta">
 								{% if user.is_authenticated %}
 								<div class="header-auth">
-									<span class="header-user">
+									<a class="header-user" href="{% url 'accounts:profile' %}">
 										<i class="fa-regular fa-user"></i>
 										{{ user.username }}
-									</span>
+									</a>
 									<a class="header-auth-btn" href="{% url 'account_logout' %}">
 										خروج
 										<i class="fa-solid fa-arrow-right-from-bracket"></i>
