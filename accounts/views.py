@@ -32,6 +32,7 @@ class ProfileEditView(LoginRequiredMixin, generic.View):
     template_name = "accounts/profile_edit.html"
     success_url = reverse_lazy("accounts:profile")
 
+    # we seperate user's action in get and post method, if they see the profile form get method is used and if they send anything post method is used
     def get(self, request, *args, **kwargs):
         profile = get_profile(request.user) # get the profile of the user
         return render(request, self.template_name, {
