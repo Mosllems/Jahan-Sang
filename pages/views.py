@@ -1,9 +1,11 @@
 import json
-from django.db.models.query import QuerySet
-from django.forms.models import BaseModelForm
 import requests
 import logging
 import uuid
+from django.db.models.query import QuerySet
+from django.forms.models import BaseModelForm
+from django.utils.decorators import method_decorator
+from django_ratelimit.decorators import ratelimit
 
 from datetime import datetime, timezone
 from django.conf import settings
@@ -51,7 +53,17 @@ class ContactFormMixin:
         return super().form_valid(form)
 
 
-class HomeView(ContactFormMixin, generic.CreateView):
+
+class PostRateLimitMixin:
+    """
+    Set a limitation on Post Method only (3 post request per hour) 
+    """
+    @method_decorator(ratelimit(key='ip', rate='3/h'))
+    def post(self, request, *args, **kwargs):
+        return super().post(request, *args, **kwargs)
+
+
+class HomeView(PostRateLimitMixin, ContactFormMixin, generic.CreateView): # we use contactform mixin for home page as well 
     template_name = "pages/home.html"
     success_url = reverse_lazy('pages:home')
 
@@ -76,7 +88,7 @@ class AboutView(generic.TemplateView):
     template_name = "pages/about.html"
 
 
-class ContactView(ContactFormMixin, generic.CreateView):
+class ContactView(PostRateLimitMixin, ContactFormMixin, generic.CreateView):
     template_name = 'pages/contact.html'
     success_url = reverse_lazy('pages:contact')
 
