@@ -1,0 +1,108 @@
+{# ---------------------------------------------------------------------------
+   500.html is INTENTIONALLY standalone — it does NOT extend base.html.
+
+   Why: a 500 usually means something is badly broken (often the database).
+   base.html relies on the `chat_widget_history` context processor, which reads
+   request.session -> which queries the DB. If the DB is what failed, rendering
+   base.html would raise a SECOND error and the user would get an ugly, bare
+   "Server Error (500)" instead of this page.
+
+   Django also renders 500.html with an EMPTY context: no {{ user }}, no
+   context processors. So keep this file dependency-free and self-contained.
+--------------------------------------------------------------------------- #}
+<!DOCTYPE html>
+<html dir="rtl" lang="fa">
+
+<head>
+	<meta charset="utf-8" />
+	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+	<title>خطای سرور</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		body {
+			min-height: 100vh;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: 24px;
+			background-color: #F7F6FB;
+			color: #1C1C25;
+			font-family: Tahoma, Arial, sans-serif;
+			text-align: center;
+		}
+
+		.box {
+			max-width: 520px;
+			background-color: #fff;
+			border-radius: 20px;
+			padding: 50px 40px;
+			box-shadow: 0 10px 40px rgba(28, 28, 37, 0.08);
+		}
+
+		.code {
+			font-size: 64px;
+			font-weight: 700;
+			color: #6421FF;
+			line-height: 1;
+			margin-bottom: 16px;
+		}
+
+		h1 {
+			font-size: 24px;
+			font-weight: 700;
+			margin-bottom: 14px;
+		}
+
+		p {
+			font-size: 15px;
+			line-height: 1.9;
+			color: #4f5259;
+			margin-bottom: 30px;
+		}
+
+		a.btn {
+			display: inline-block;
+			padding: 14px 34px;
+			border-radius: 100px;
+			background-color: #6421FF;
+			color: #fff;
+			font-size: 15px;
+			font-weight: 600;
+			text-decoration: none;
+			transition: opacity 0.3s;
+		}
+
+		a.btn:hover {
+			opacity: 0.85;
+		}
+
+		@media (max-width: 575px) {
+			.box {
+				padding: 36px 24px;
+			}
+
+			.code {
+				font-size: 48px;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<div class="box">
+		<div class="code">۵۰۰</div>
+		<h1>خطایی در سرور رخ داد</h1>
+		<p>
+			متأسفانه مشکلی پیش آمده و در حال بررسی آن هستیم.
+			لطفاً چند لحظه دیگر دوباره تلاش کنید.
+		</p>
+		<a class="btn" href="/">بازگشت به صفحه اصلی</a>
+	</div>
+</body>
+
+</html>
