@@ -5002,23 +5002,23 @@ section {
 
 /* hero 2 area style  */
 .hero-2-area {
-  margin-top: 155px;
+  margin-top: 0;
   position: relative;
   z-index: 1;
 }
 @media only screen and (max-width: 1919px) {
   .hero-2-area {
-    margin-top: 145px;
+    margin-top: 0;
   }
 }
 @media only screen and (max-width: 1199px) {
   .hero-2-area {
-    margin-top: 135px;
+    margin-top: 0;
   }
 }
 @media only screen and (max-width: 767px) {
   .hero-2-area {
-    margin-top: 90px;
+    margin-top: 0;
   }
 }
 
@@ -5038,7 +5038,7 @@ section {
 }
 
 .hero-2-inner {
-  padding-top: 165px;
+  padding-top: 190px;
   padding-bottom: 204px;
   display: grid;
   gap: 40px 60px;
@@ -5048,20 +5048,20 @@ section {
 }
 @media only screen and (max-width: 1919px) {
   .hero-2-inner {
-    padding-top: 135px;
+    padding-top: 160px;
     grid-template-columns: 610px auto;
   }
 }
 @media only screen and (max-width: 1199px) {
   .hero-2-inner {
-    padding-top: 105px;
+    padding-top: 130px;
     padding-bottom: 164px;
     grid-template-columns: 470px auto;
   }
 }
 @media only screen and (max-width: 991px) {
   .hero-2-inner {
-    padding-top: 85px;
+    padding-top: 110px;
     padding-bottom: 114px;
     grid-template-columns: auto;
   }
@@ -5182,13 +5182,13 @@ section {
   width: 672px;
   aspect-ratio: 100/84;
   overflow: hidden;
-  position: absolute;
-  top: 90px;
-  left: -60px;
+  position: relative;
+  margin-left: -60px;
+  align-self: center;
 }
 @media only screen and (max-width: 1919px) {
   .hero-2-thumb-wrapper {
-    left: 0;
+    margin-left: 0;
     width: 622px;
   }
 }
@@ -5200,8 +5200,7 @@ section {
 @media only screen and (max-width: 991px) {
   .hero-2-thumb-wrapper {
     position: relative;
-    top: 0;
-    right: 0;
+    margin-left: 0;
   }
 }
 @media only screen and (max-width: 767px) {
@@ -13563,24 +13562,30 @@ section {
 /* breadcrumb css */
 /* breadcrumb area style  */
 .breadcrumb-area {
-  margin-top: 155px;
-  padding: 40px 40px 0;
+  margin-top: 0;
+  padding: 155px 40px 0;
 }
 @media only screen and (max-width: 1919px) {
   .breadcrumb-area {
-    margin-top: 135px;
-    padding: 20px 20px 0;
+    margin-top: 0;
+    padding: 145px 20px 0;
   }
 }
 @media only screen and (max-width: 1199px) {
   .breadcrumb-area {
-    margin-top: 125px;
-    padding: 10px 10px 0;
+    margin-top: 0;
+    padding: 135px 10px 0;
+  }
+}
+@media (max-width: 767px) {
+  .breadcrumb-area {
+    margin-top: 0;
+    padding-top: 90px;
   }
 }
 @media (max-width: 575px) {
   .breadcrumb-area {
-    margin-top: 80px;
+    margin-top: 0;
   }
 }
 
@@ -14320,4 +14325,37 @@ section {
   margin-bottom: 20px;
   font-size: 15px;
   color: var(--black-2);
+}
+
+/* ===== Homepage mobile overflow fix (RTL) ===== */
+html, body {
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+main {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Hide decorative shapes that overflow the viewport on mobile */
+@media only screen and (max-width: 991px) {
+  .hero2-shape-1,
+  .hero2-shape-2,
+  .hero2-shape-3,
+  .about-process-group-bg .area-shape-1,
+  .about-process-group-bg .area-shape-2 {
+    display: none;
+  }
+  .hero-2-thumb-wrapper,
+  .hero-2-thumb-wrapper .thumb-shape-1,
+  .hero-2-thumb-wrapper .thumb-shape-2 {
+    max-width: 100%;
+  }
+}
+
+/* Keep GSAP-animated elements from creating horizontal scroll */
+.fade-anim {
+  max-width: 100%;
 }
