@@ -1,0 +1,96 @@
+/* Look & feel of the CKEditor 5 rich-text editor in the Django admin. */
+
+@font-face {
+  font-family: "ModamPro";
+  src: url(../fonts/ModamFaNumWeb-Medium.woff2) format("woff2");
+  font-display: swap;
+}
+
+.ck-editor-container {
+  flex: 1 1 auto;
+  width: 100%;
+  max-width: 900px;
+  min-width: 0;
+}
+
+/* Editor theme */
+.ck.ck-editor {
+  --ck-color-focus-border: #6421ff;
+  --ck-color-button-on-background: #efe9ff;
+  --ck-color-button-on-hover-background: #e3d9ff;
+  --ck-color-button-on-color: #4a14c7;
+  --ck-border-radius: 8px;
+  --ck-font-face: "ModamPro", Tahoma, sans-serif;
+  border-radius: 10px;
+  box-shadow: 0 1px 3px rgba(28, 28, 37, 0.08);
+}
+
+.ck.ck-editor__top .ck-sticky-panel__content {
+  border-radius: 10px 10px 0 0;
+}
+.ck.ck-toolbar {
+  background: #faf9fc;
+  border-color: #e5e5e5;
+  padding: 4px 6px;
+}
+
+/* Writing area */
+.ck.ck-editor__main > .ck-editor__editable {
+  min-height: 380px;
+  max-height: 70vh;
+  padding: 18px 26px;
+  border-color: #e5e5e5;
+  border-radius: 0 0 10px 10px !important;
+  background: #fff;
+}
+
+.ck-content {
+  font-family: "ModamPro", Tahoma, sans-serif;
+  font-size: 16px;
+  line-height: 2;
+  color: #1c1c25;
+}
+.ck-content h2 { font-size: 1.5em; margin: 1.2em 0 0.5em; }
+.ck-content h3 { font-size: 1.25em; margin: 1.1em 0 0.4em; }
+.ck-content h4 { font-size: 1.1em; margin: 1em 0 0.4em; }
+.ck.ck-content blockquote,
+.ck.ck-content[dir="rtl"] blockquote {
+  border: 0;
+  border-inline-start: 4px solid #6421ff;
+  background: rgba(100, 33, 255, 0.05);
+  border-radius: 6px;
+  padding: 0.6em 1em;
+  font-style: normal;
+  margin: 1em 0;
+}
+.ck-content blockquote p { margin: 0; }
+.ck-content code {
+  direction: ltr;
+  unicode-bidi: isolate;
+  background: #f3f1f8;
+  color: #c7254e;
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+}
+.ck-content pre {
+  direction: ltr;
+  text-align: left;
+  background: #1e1e2a;
+  color: #e8e6f0;
+  border-radius: 8px;
+  border: 0;
+}
+.ck-content pre code { background: none; color: inherit; padding: 0; }
+.ck-content .table table th { background: #f6f4fb; }
+
+/* Word counter under the editor */
+.ck-editor-container .word-count {
+  display: block;
+  margin-top: 6px;
+  color: #797e88;
+  font-size: 12px;
+}
+.ck-editor-container .ck-word-count {
+  display: flex;
+  gap: 12px;
+}

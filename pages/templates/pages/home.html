@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load static %}
+{% load static markdown_extras %}
 
 {% block title %} خانه {% endblock title %}
 
@@ -1191,7 +1191,7 @@
 			  </a>
 			 </h3>
 			 <p class="text">
-			  {{ project.description|truncatewords:15 }}
+			  {{ project.description|markdown_plain|truncatewords:15 }}
 			 </p>
 			</div>
 		   </div>
@@ -1307,7 +1307,7 @@
 		     </a>
 		    </h2>
 		    <p class="text">
-		     {{ blog.text|truncatewords:25 }}
+		     {{ blog.text|markdown_plain|truncatewords:25 }}
 		    </p>
 		    <div class="meta">
 		     <span class="date">

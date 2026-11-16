@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load static %}
+{% load static markdown_extras %}
 
 {% block title %}بلاگ{% endblock title %}
 
@@ -68,7 +68,7 @@
                                     </a>
                                 </h2>
                                 <p class="text">
-                                    {{ blog.content|truncatewords:20 }}
+                                    {{ blog.text|markdown_plain|truncatewords:20 }}
                                 </p>
                                 <a class="rr-btn" href="{% url 'blogs:blog_detail' blog.slug %}">
                                     <span class="btn-wrap">

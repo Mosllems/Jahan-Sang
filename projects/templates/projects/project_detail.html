@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load static %}
+{% load static markdown_extras %}
 
 {% block title %} جزئیات پروژه {% endblock title %}
 
@@ -27,6 +27,7 @@
 		color: #fff;
 	}
 </style>
+<link href="{% static 'css/article.css' %}" rel="stylesheet" />
 {% endblock extra_css %}
 
 {% block content %}
@@ -150,9 +151,9 @@
 						<h3 class="info-title">
 							{{ project.title }}
 						</h3>
-						<p class="text">
-							{{ project.description }}
-						</p>
+						<div class="article-body" dir="auto">
+							{{ project.description|markdown }}
+						</div>
 						
 					</div>
 				</div>

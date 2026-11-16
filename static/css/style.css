@@ -7195,6 +7195,8 @@ section {
   line-height: 1.42;
   color: var(--white);
   text-transform: uppercase;
+  /* room for Persian descenders (ر ز ن) — .content has overflow:hidden */
+  padding-bottom: 12px;
 }
 @media only screen and (max-width: 1199px) {
   .project-3-box .title {

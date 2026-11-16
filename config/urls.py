@@ -29,6 +29,7 @@ urlpatterns = [
     path('blogs/', include('blogs.urls')),
     path('projects/', include('projects.urls')),
     path('inventory/', include('inventory.urls')),
+    path('ckeditor5/', include('django_ckeditor_5.urls')),
 ] + debug_toolbar_urls()
 
 if settings.DEBUG:

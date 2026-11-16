@@ -1,5 +1,7 @@
 from django.contrib import admin
 
+from config.rich_text import RichTextAdminMixin
+
 from .models import Blog, Category, Comment
 
 
@@ -16,7 +18,7 @@ class CommentInline(admin.TabularInline):
     extra = 1
 
 @admin.register(Blog)
-class BlogAdmin(admin.ModelAdmin):
+class BlogAdmin(RichTextAdminMixin, admin.ModelAdmin):
     list_display = ("title", "author", "category", "datetime_created", "datetime_modified")
     list_filter = ("author", "category", "datetime_created", "datetime_modified")
     search_fields = ("title", "text")

@@ -50,6 +50,7 @@ INSTALLED_APPS = [
 
     # third-party
     "debug_toolbar",
+    "django_ckeditor_5",
 
     # local apps
     'accounts',
@@ -184,4 +185,52 @@ ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_FORMS = {
     "signup": "accounts.forms.CustomSignupForm",
     "login": "accounts.forms.CustomLoginForm",
+}
+
+
+# Rich-text editor (CKEditor 5) — used in the admin through config.rich_text.
+# Content is saved as Markdown (the editor's Markdown plugin) and rendered in
+# templates with the `markdown` filter.
+CKEDITOR_5_CUSTOM_CSS = "css/admin_rich_editor.css"
+CKEDITOR_5_FILE_STORAGE = "config.rich_text.EditorUploadStorage"
+CKEDITOR_5_FILE_UPLOAD_PERMISSION = "staff"
+CKEDITOR_5_CONFIGS = {
+    "default": {
+        "language": {"ui": "fa", "content": "fa"},
+        "placeholder": "متن را اینجا بنویسید یا پیست کنید...",
+        "extraPlugins": ["callback:MarkdownPastePlugin"],
+        "removePlugins": ["FullPage", "Style", "HtmlEmbed"],
+        "toolbar": {
+            "items": [
+                "heading", "|",
+                "bold", "italic", "strikethrough", "code", "link", "|",
+                "bulletedList", "numberedList", "blockQuote", "|",
+                "insertTable", "codeBlock", "uploadImage", "horizontalLine", "|",
+                "undo", "redo", "|",
+                "sourceEditing",
+            ],
+            "shouldNotGroupWhenFull": False,
+        },
+        "heading": {
+            "options": [
+                {"model": "paragraph", "title": "متن عادی", "class": "ck-heading_paragraph"},
+                {"model": "heading2", "view": "h2", "title": "تیتر اصلی", "class": "ck-heading_heading2"},
+                {"model": "heading3", "view": "h3", "title": "تیتر فرعی", "class": "ck-heading_heading3"},
+                {"model": "heading4", "view": "h4", "title": "تیتر کوچک", "class": "ck-heading_heading4"},
+            ],
+        },
+        "image": {"toolbar": ["imageTextAlternative"]},
+        "table": {"contentToolbar": ["tableColumn", "tableRow"]},
+        "codeBlock": {
+            "languages": [
+                {"language": "plaintext", "label": "متن ساده"},
+                {"language": "python", "label": "Python"},
+                {"language": "javascript", "label": "JavaScript"},
+                {"language": "html", "label": "HTML"},
+                {"language": "css", "label": "CSS"},
+                {"language": "bash", "label": "Bash"},
+                {"language": "json", "label": "JSON"},
+            ],
+        },
+    },
 }

@@ -1,5 +1,7 @@
 from django.contrib import admin
 
+from config.rich_text import RichTextAdminMixin
+
 from projects.models import Project, ProjectCategory, ProjectImage
 
 
@@ -17,7 +19,7 @@ class ProjectCategoryAdmin(admin.ModelAdmin):
 
 
 @admin.register(Project)
-class ProjectAdmin(admin.ModelAdmin):
+class ProjectAdmin(RichTextAdminMixin, admin.ModelAdmin):
     list_display = ('title', 'category', 'client', 'location', 'datetime_created', 'datetime_modified')
     list_filter = ('category',)
     search_fields = ('title', 'client', 'location')
