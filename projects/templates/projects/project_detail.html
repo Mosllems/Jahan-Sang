@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load static markdown_extras %}
+{% load static markdown_extras jalali_extras %}
 
 {% block title %} جزئیات پروژه {% endblock title %}
 
@@ -118,7 +118,7 @@
 										تاریخ:
 									</p>
 									<p class="text">
-										{{ project.datetime_modified|date:"Y/m/d" }}
+										{{ project.datetime_modified|jdate }}
 									</p>
 								</div>
 							</div>

@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load static %}
+{% load static jalali_extras %}
 
 {% block title %} پروفایل من {% endblock title %}
 
@@ -109,7 +109,7 @@
                             <div class="profile-stat-box">
                                 <div class="icon"><i class="fa-regular fa-calendar-days"></i></div>
                                 <div class="content">
-                                    <p class="value">{{ user.date_joined|date:"Y/m/d" }}</p>
+                                    <p class="value">{{ user.date_joined|jdate }}</p>
                                     <p class="label">تاریخ عضویت</p>
                                 </div>
                             </div>

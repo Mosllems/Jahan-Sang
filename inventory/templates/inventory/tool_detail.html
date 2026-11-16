@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load static %}
+{% load static jalali_extras %}
 
 {% block title %} {{ tool.name }} {% endblock title %}
 
@@ -90,7 +90,7 @@
                                 <div class="icon"><i class="fa-solid fa-calendar-days"></i></div>
                                 <div class="content">
                                     <p class="label">آخرین بروزرسانی</p>
-                                    <p class="value">{{ tool.datetime_modified|date:"Y/m/d" }}</p>
+                                    <p class="value">{{ tool.datetime_modified|jdate }}</p>
                                 </div>
                             </div>
                         </div>

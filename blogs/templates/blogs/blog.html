@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load static markdown_extras %}
+{% load static markdown_extras jalali_extras %}
 
 {% block title %}بلاگ{% endblock title %}
 
@@ -54,7 +54,7 @@
                                     <span class="date">
                                         <i class="fa-regular fa-calendar">
                                         </i>
-                                        {{ blog.datetime_modified|date:"Y/m/d" }}
+                                        {{ blog.datetime_modified|jdate }}
                                     </span>
                                     <span class="author">
                                         <i class="fa-regular fa-user">
