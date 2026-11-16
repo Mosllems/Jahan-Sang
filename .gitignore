@@ -7,3 +7,4 @@ staticfiles
 *.pyc
 .claude
 .vscode
+media/
